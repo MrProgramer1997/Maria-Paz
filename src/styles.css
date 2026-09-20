@@ -206,6 +206,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .final-copy h2 span { color: var(--pink); font-style: italic; }
 .final-xv { font-family: var(--serif); font-size: 1.4rem; border: 1px solid rgba(255,255,255,.32); width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; margin: 20px auto 0; }
 
+.admin-entry-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 34px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(8,7,10,.38);
+  color: rgba(255,255,255,.58);
+  font-size: .67rem;
+  letter-spacing: .06em;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: color .25s ease, border-color .25s ease, background .25s ease, transform .25s ease;
+}
+.admin-entry-button:hover {
+  color: #fff;
+  border-color: rgba(233,188,201,.55);
+  background: rgba(233,188,201,.1);
+  transform: translateY(-1px);
+}
+
 .state-screen { min-height: 100svh; display: grid; place-items: center; background: #09080b; color: #fff; text-align: center; padding: 24px; }
 .state-screen h1 { font-family: var(--serif); font-size: 3.4rem; margin: 6px 0; }
 .state-screen span { color: var(--pink); letter-spacing: .2em; }

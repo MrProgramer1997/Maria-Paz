@@ -8,7 +8,7 @@ interface RsvpSectionProps {
   initialConfirmedSeats: number | null
 }
 
-const WHATSAPP_MARIA = '573108783759'
+const WHATSAPP_MARIA = '573118783759'
 const WHATSAPP_MAMA = '573104784713'
 
 export function RsvpSection({ code, seats, initialStatus, initialConfirmedSeats }: RsvpSectionProps) {

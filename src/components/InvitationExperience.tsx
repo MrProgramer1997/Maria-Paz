@@ -197,6 +197,9 @@ export function InvitationExperience({ invitation, code, opened, onOpen }: Invit
               <strong>Con amor,</strong>
               <h2>María Paz <span>&amp;</span> sus papás</h2>
               <div className="final-xv">XV</div>
+              <a className="admin-entry-button" href="#/admin" aria-label="Abrir panel administrativo">
+                <span aria-hidden="true">⚙</span> Panel administrativo
+              </a>
             </Reveal>
           </section>
         </>

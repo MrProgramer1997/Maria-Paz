@@ -14,6 +14,8 @@ Negro. Evitar tonos plateados y grises.
 ## Confirmación
 Fecha límite: 17 de octubre de 2026.
 
+WhatsApp María Paz: +57 311 8783759.
+
 ## Lluvia de sobres
 Mostrar únicamente el concepto/título «Lluvia de sobres».  
 No incluir el texto: «Si deseas tener un detalle con María Paz, puedes hacerlo en un sobre.»
