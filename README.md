@@ -40,3 +40,9 @@ git push
 ```
 
 GitHub Actions compila y publica automáticamente.
+
+
+## v1.4
+- Corrige el despliegue de GitHub Actions cuando no existe `package-lock.json`.
+- Se elimina el cache de npm en `setup-node`, por lo que el workflow ya no exige lockfile.
+- Se fija el runner en Ubuntu 24.04 para evitar el aviso de migración de `ubuntu-latest`.
