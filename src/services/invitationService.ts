@@ -1,13 +1,15 @@
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import type { Registration } from '../types/invitation'
 
-export async function registerGuest(fullName: string, phone: string, attendees: number) {
+export async function registerGuest(fullName: string, phone: string, attendees: number, songRecommendation?: string) {
   const normalizedName = fullName.trim()
   const normalizedPhone = phone.replace(/\D/g, '').slice(0, 15)
+  const normalizedSong = songRecommendation?.trim() || null
 
   if (normalizedName.length < 2) throw new Error('INVALID_NAME')
   if (normalizedPhone.length < 7) throw new Error('INVALID_PHONE')
-  if (attendees < 1 || attendees > 4) throw new Error('INVALID_ATTENDEES')
+  if (attendees < 1 || attendees > 2) throw new Error('INVALID_ATTENDEES')
+  if (normalizedSong && (normalizedSong.length < 2 || normalizedSong.length > 160)) throw new Error('INVALID_SONG')
 
   if (!isSupabaseConfigured || !supabase) {
     await new Promise((resolve) => setTimeout(resolve, 500))
@@ -20,6 +22,7 @@ export async function registerGuest(fullName: string, phone: string, attendees: 
       full_name: normalizedName,
       phone: normalizedPhone,
       attendees,
+      song_recommendation: normalizedSong,
     })
 
   if (error) {
@@ -48,6 +51,7 @@ export async function getRegistrations(): Promise<Registration[]> {
         full_name: 'Invitado de prueba',
         phone: '3001234567',
         attendees: 2,
+        song_recommendation: 'I Will Survive - Gloria Gaynor',
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       },
@@ -56,7 +60,7 @@ export async function getRegistrations(): Promise<Registration[]> {
 
   const { data, error } = await supabase
     .from('registrations')
-    .select('id, full_name, phone, attendees, created_at, updated_at')
+    .select('id, full_name, phone, attendees, song_recommendation, created_at, updated_at')
     .order('created_at', { ascending: false })
 
   if (error) throw error

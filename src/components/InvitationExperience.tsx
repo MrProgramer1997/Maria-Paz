@@ -116,7 +116,8 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
                 <p className="event-time">7:00 p. m.</p>
                 <div className="event-line" />
                 <strong>Hotel Campestre Villa Juana</strong>
-                <p>Km 8 · Entrada 7 · Cerritos · Pereira</p>
+                <p>Km 8 · Entrada 7 · Cerritos · Pereira, Risaralda</p>
+                <a className="event-contact" href="tel:+573218012335">Tel. 321 801 2335</a>
                 <a className="outline-button" href={MAPS_URL} target="_blank" rel="noreferrer">
                   Abrir en Google Maps ↗
                 </a>
@@ -140,7 +141,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             <Reveal className="reserved-card">
               <span className="eyebrow">Queremos compartirlo contigo</span>
               <h2>Tu presencia hace especial esta noche.</h2>
-              <p>Regístrate a continuación para confirmar cuántas personas nos acompañarán.</p>
+              <p>Regístrate a continuación para confirmar tu asistencia. Cada registro permite máximo 2 asistentes.</p>
             </Reveal>
           </section>
 
@@ -184,7 +185,8 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
                 compartimos con quienes amamos.
               </p>
               <p>
-                Gracias por acompañarnos en una noche que quedará para siempre en nuestros corazones.
+                Gracias por ser parte de nuestra historia y por acompañarnos en una noche que quedará para siempre
+                en nuestros corazones.
               </p>
               <strong>Con amor,</strong>
               <h2>María Paz <span>&amp;</span> sus papás</h2>

@@ -365,66 +365,47 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .stats-grid--compact { grid-template-columns: 1fr; }
 }
 
-
-/* Reproductor oficial de YouTube en formato mini.
-   Mantiene la música accesible sin cubrir la invitación. */
-.music-mini {
+/* Reproductor de YouTube fuera de la vista.
+   El usuario solo ve el boton flotante de musica. */
+.music-audio-frame {
   position: fixed;
-  right: max(14px, env(safe-area-inset-right));
-  bottom: calc(max(20px, env(safe-area-inset-bottom)) + 62px);
-  z-index: 80;
-  width: min(206px, calc(100vw - 28px));
-  aspect-ratio: 16 / 9;
+  width: 200px;
+  height: 200px;
+  left: -9999px;
+  top: -9999px;
   overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(233, 188, 201, .3);
-  background: #050506;
-  box-shadow: 0 14px 42px rgba(0, 0, 0, .34);
-  animation: musicMiniIn .35s cubic-bezier(.2,.8,.2,1) both;
-}
-.music-mini__player {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #000;
-}
-.music-mini__caption {
-  position: absolute;
-  left: 7px;
-  bottom: 7px;
-  max-width: calc(100% - 46px);
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(9, 8, 11, .76);
-  backdrop-filter: blur(8px);
-  color: rgba(255,255,255,.92);
-  font-size: .58rem;
-  letter-spacing: .035em;
   pointer-events: none;
 }
-.music-mini__caption span {
-  color: var(--pink);
-  margin-right: 3px;
+.music-audio-frame iframe {
+  width: 200px;
+  height: 200px;
+  border: 0;
 }
-.music-mini__close {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(255,255,255,.28);
-  border-radius: 50%;
-  background: rgba(9,8,11,.78);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-}
-@media (max-width: 520px) {
-  .music-mini {
-    width: 178px;
-    right: 12px;
-  }
+
+
+/* V1.12 — restauración de contenido aprobado */
+.rsvp-intro { margin: 20px 0 16px; }
+.rsvp-intro p { margin: 0 0 8px; }
+.rsvp-deadline { display: inline-grid; gap: 3px; margin: 4px 0 18px; padding: 12px 16px; border: 1px solid #cba7b5; background: rgba(255,255,255,.6); }
+.rsvp-deadline span { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: #9d6379; }
+.rsvp-deadline strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.12rem; font-weight: 500; color: var(--ink); }
+.event-contact { display: inline-block; margin: 4px 0 16px; color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; font-size: .78rem; }
+
+.seat-limit-note { display: block; margin-top: 8px; color: #806d74; font-size: .74rem; }
+.song-recommendation-field { display: grid; gap: 8px; margin: 22px 0; font-size: .78rem; color: #6c5e64; }
+.song-recommendation-field > span { display: flex; gap: 6px; align-items: baseline; }
+.song-recommendation-field > span small { color: #9d8e94; font-weight: 400; }
+.song-recommendation-field input { width: 100%; border: 1px solid #ddcfd4; background: #fff; padding: 15px 14px; font-size: 1rem; outline: none; border-radius: 2px; }
+.song-recommendation-field input:focus { border-color: #a96e83; box-shadow: 0 0 0 3px rgba(169,110,131,.09); }
+.song-recommendation-field > small { color: #89777e; line-height: 1.45; }
+.stats-grid--three { grid-template-columns: repeat(3, 1fr); }
+.registration-table-wrap { width: 100%; overflow-x: auto; }
+.registration-table { width: 100%; min-width: 840px; border-collapse: collapse; }
+.registration-table th, .registration-table td { padding: 15px 14px; text-align: left; border-bottom: 1px solid rgba(96,75,83,.12); vertical-align: top; }
+.registration-table th { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: #8d737d; font-weight: 600; background: rgba(255,255,255,.55); }
+.registration-table td { font-size: .86rem; color: #51444a; }
+.registration-table td:nth-child(4) { min-width: 240px; }
+.muted-cell { color: #a29298; font-style: italic; }
+@media (max-width: 720px) {
+  .stats-grid--three { grid-template-columns: 1fr; }
 }

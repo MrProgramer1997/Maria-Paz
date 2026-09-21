@@ -3,18 +3,18 @@ import { useEffect, useMemo, useState } from 'react'
 const YOUTUBE_VIDEO_ID = '6dYWe1c3OyU'
 
 export function MusicPlayer({ active }: { active: boolean }) {
-  const [playerOpen, setPlayerOpen] = useState(false)
+  const [musicEnabled, setMusicEnabled] = useState(false)
   const [playerKey, setPlayerKey] = useState(0)
 
   useEffect(() => {
     if (active) {
-      // El clic en “Descubrir mi invitación” cuenta como interacción del usuario.
-      // El reproductor se abre en formato mini para intentar iniciar la canción
-      // sin cubrir el contenido principal de la tarjeta.
-      setPlayerOpen(true)
+      // El clic en “Descubrir mi invitación” intenta iniciar la música.
+      // El reproductor de YouTube permanece fuera de la vista para no
+      // interferir visualmente con la tarjeta.
+      setMusicEnabled(true)
       setPlayerKey((value) => value + 1)
     } else {
-      setPlayerOpen(false)
+      setMusicEnabled(false)
     }
   }, [active])
 
@@ -23,9 +23,10 @@ export function MusicPlayer({ active }: { active: boolean }) {
       autoplay: '1',
       loop: '1',
       playlist: YOUTUBE_VIDEO_ID,
-      controls: '1',
+      controls: '0',
       playsinline: '1',
       rel: '0',
+      modestbranding: '1',
     })
 
     return `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?${params.toString()}`
@@ -33,9 +34,9 @@ export function MusicPlayer({ active }: { active: boolean }) {
 
   if (!active) return null
 
-  function togglePlayer() {
-    setPlayerOpen((open) => {
-      const next = !open
+  function toggleMusic() {
+    setMusicEnabled((enabled) => {
+      const next = !enabled
       if (next) setPlayerKey((value) => value + 1)
       return next
     })
@@ -43,37 +44,24 @@ export function MusicPlayer({ active }: { active: boolean }) {
 
   return (
     <>
-      {playerOpen && (
-        <aside className="music-mini" aria-label="Reproductor de música">
+      {musicEnabled && (
+        <div className="music-audio-frame" aria-hidden="true">
           <iframe
             key={playerKey}
-            className="music-mini__player"
             src={playerUrl}
-            title="I Will Survive de Gloria Gaynor"
-            allow="autoplay; encrypted-media; picture-in-picture; web-share"
-            allowFullScreen
+            title="Música de la invitación"
+            allow="autoplay; encrypted-media"
+            tabIndex={-1}
           />
-          <div className="music-mini__caption" aria-hidden="true">
-            <span>♪</span> I Will Survive
-          </div>
-          <button
-            type="button"
-            className="music-mini__close"
-            onClick={() => setPlayerOpen(false)}
-            aria-label="Cerrar reproductor"
-            title="Cerrar reproductor"
-          >
-            ×
-          </button>
-        </aside>
+        </div>
       )}
 
       <button
         type="button"
-        className={`music-button music-button--label ${playerOpen ? 'is-playing' : ''}`}
-        onClick={togglePlayer}
-        aria-label={playerOpen ? 'Ocultar música' : 'Mostrar música'}
-        title={playerOpen ? 'Ocultar música' : 'Mostrar música'}
+        className={`music-button music-button--label ${musicEnabled ? 'is-playing' : ''}`}
+        onClick={toggleMusic}
+        aria-label={musicEnabled ? 'Pausar música' : 'Reproducir música'}
+        title={musicEnabled ? 'Pausar música' : 'Reproducir música'}
       >
         <span className="music-icon" aria-hidden="true">♪</span>
         <span className="music-button__text">Música</span>

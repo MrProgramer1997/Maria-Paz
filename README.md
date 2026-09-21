@@ -1,31 +1,30 @@
-# Invitación María Paz XV — V1.9
+# Invitación María Paz XV — V1.12
 
 Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y publicada en GitHub Pages.
 
-## Correcciones V1.9
+## Estado V1.12
 
-- Fotografías provisionales importadas desde `src/assets/images` para que Vite las incluya y versione correctamente en el build de GitHub Pages.
-- `base` de Vite fijado a `/Maria-Paz/` para la publicación en el repositorio actual.
-- Reproductor de la canción elegida usando el embed oficial de YouTube.
-- El reproductor se abre al entrar a la invitación e intenta autoplay después de la interacción del usuario.
-- Si el navegador móvil bloquea autoplay, queda visible el botón Play nativo y un enlace de respaldo a YouTube.
-- Ningún fallo de música o imágenes bloquea el contenido principal.
+- Mantiene fotografías importadas desde `src/assets/images`.
+- Mantiene `base: /Maria-Paz/` para GitHub Pages.
+- Mantiene registro público en Supabase con nombre, celular y 1 a 4 asistentes.
+- Mantiene panel administrativo protegido con Supabase Auth.
+- Mantiene aviso posterior por WhatsApp a María Paz o Vanessa.
+- Mantiene la música de YouTube sin video visible; solo aparece el botón Música.
+- Restaura la fecha límite de confirmación: 17 de octubre de 2026.
+- Restaura los textos originales de confirmación y el mensaje final completo.
+- Añade el teléfono informado del lugar de la celebración.
 
 ## Publicación
 
 ```bash
 git add .
-git commit -m "Corrige fotos y reproductor de musica V1.9"
+git commit -m "Restaura contenido aprobado V1.12"
 git push
 ```
 
-GitHub Actions compila y publica automáticamente.
-
-
-## V1.9 - reproductor compacto
-El reproductor de YouTube se redujo a un mini reproductor flotante 16:9 para no tapar la tarjeta. Se conserva la animación del botón Música y el acceso directo a los controles del reproductor.
-
-
-## V1.10
-- Corrige el registro publico para usuarios anonimos y sesiones autenticadas.
-- Mantiene el aviso posterior por WhatsApp a Maria Paz o Vanessa.
+## Cambios V1.13
+- Máximo 2 asistentes por registro, validado también en Supabase.
+- Campo opcional para recomendar una canción.
+- La canción recomendada se guarda en `registrations.song_recommendation`.
+- El panel administrativo muestra la canción al lado del registro y conserva quién la recomendó.
+- Se mantienen la fecha límite del 17 de octubre, música oculta, WhatsApp, panel admin y fotografías.

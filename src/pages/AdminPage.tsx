@@ -58,6 +58,7 @@ export function AdminPage() {
   const stats = useMemo(() => ({
     registrations: items.length,
     attendees: items.reduce((sum, item) => sum + item.attendees, 0),
+    songs: items.filter((item) => Boolean(item.song_recommendation?.trim())).length,
   }), [items])
 
   if (!loggedIn) {
@@ -89,7 +90,7 @@ export function AdminPage() {
         <div>
           <span className="admin-brand">MARÍA PAZ · XV</span>
           <h1>Registros</h1>
-          <p>Personas que confirmaron su asistencia desde la invitación.</p>
+          <p>Personas registradas, asistentes y canciones recomendadas.</p>
         </div>
         <div className="admin-actions">
           {!isSupabaseConfigured && <span className="demo-badge">Modo demo</span>}
@@ -98,9 +99,10 @@ export function AdminPage() {
         </div>
       </header>
 
-      <section className="stats-grid stats-grid--compact">
+      <section className="stats-grid stats-grid--compact stats-grid--three">
         <article><span>Registros</span><strong>{stats.registrations}</strong></article>
         <article><span>Personas confirmadas</span><strong>{stats.attendees}</strong></article>
+        <article><span>Canciones sugeridas</span><strong>{stats.songs}</strong></article>
       </section>
 
       <section className="admin-card guest-list-card admin-card--wide">
@@ -119,18 +121,29 @@ export function AdminPage() {
         ) : items.length === 0 ? (
           <p className="admin-empty">Todavía no hay personas registradas.</p>
         ) : (
-          <div className="guest-list">
-            {items.map((item) => (
-              <article className="guest-row guest-row--registration" key={item.id}>
-                <div className="guest-main">
-                  <strong>{item.full_name}</strong>
-                  <small>{item.phone}</small>
-                </div>
-                <span className="status status--confirmado">Confirmado</span>
-                <span className="guest-confirmed">{item.attendees} {item.attendees === 1 ? 'persona' : 'personas'}</span>
-                <small>{new Date(item.created_at).toLocaleString('es-CO')}</small>
-              </article>
-            ))}
+          <div className="registration-table-wrap">
+            <table className="registration-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Celular</th>
+                  <th>Asistentes</th>
+                  <th>Canción recomendada</th>
+                  <th>Fecha de registro</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    <td><strong>{item.full_name}</strong></td>
+                    <td>{item.phone}</td>
+                    <td>{item.attendees}</td>
+                    <td>{item.song_recommendation || <span className="muted-cell">Sin recomendación</span>}</td>
+                    <td>{new Date(item.created_at).toLocaleString('es-CO')}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
       </section>

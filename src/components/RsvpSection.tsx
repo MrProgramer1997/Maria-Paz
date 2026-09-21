@@ -21,6 +21,7 @@ export function RsvpSection() {
   const [guestName, setGuestName] = useState('')
   const [guestPhone, setGuestPhone] = useState('')
   const [attendees, setAttendees] = useState(1)
+  const [songRecommendation, setSongRecommendation] = useState('')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState('')
@@ -30,7 +31,8 @@ export function RsvpSection() {
     `Nombre: ${guestName}`,
     `Celular: ${guestPhone}`,
     `Asistentes registrados: ${attendees}`,
-  ].join('\n')), [attendees, guestName, guestPhone])
+    songRecommendation.trim() ? `Canción recomendada: ${songRecommendation.trim()}` : '',
+  ].filter(Boolean).join('\n')), [attendees, guestName, guestPhone, songRecommendation])
 
   async function saveRegistration() {
     if (guestName.trim().length < 2) {
@@ -44,13 +46,19 @@ export function RsvpSection() {
       return
     }
 
+    if (songRecommendation.trim().length > 160) {
+      setError('La recomendación de canción es demasiado larga.')
+      return
+    }
+
     setSaving(true)
     setError('')
 
     try {
-      await registerGuest(guestName, phone, attendees)
+      await registerGuest(guestName, phone, attendees, songRecommendation)
       setGuestName(guestName.trim())
       setGuestPhone(phone)
+      setSongRecommendation(songRecommendation.trim())
       setSaved(true)
     } catch (err) {
       if (err instanceof Error && err.message === 'PHONE_ALREADY_REGISTERED') {
@@ -67,8 +75,18 @@ export function RsvpSection() {
     <div className="rsvp-card">
       <span className="eyebrow">Confirma tu asistencia</span>
       <h2>Regístrate para acompañarnos.</h2>
+      <div className="rsvp-intro">
+        <p>Hay momentos que se vuelven inolvidables cuando los compartimos con quienes amamos.</p>
+        <p>Tu presencia será parte de este recuerdo tan especial.</p>
+      </div>
+
+      <div className="rsvp-deadline" role="note" aria-label="Fecha límite de confirmación">
+        <span>Confirmaciones hasta</span>
+        <strong>17 de octubre de 2026</strong>
+      </div>
+
       <p>
-        Completa tus datos y registra cuántas personas asistirán contigo. Al finalizar podrás avisar por WhatsApp a María Paz o Vanessa.
+        Completa tus datos. Cada registro permite un máximo de <strong>2 asistentes</strong>. Al finalizar podrás avisar por WhatsApp a María Paz o Vanessa.
       </p>
 
       {saved ? (
@@ -77,13 +95,14 @@ export function RsvpSection() {
           <div>
             <strong>¡Tu registro quedó guardado!</strong>
             <p>{guestName}, registramos {attendees} {attendees === 1 ? 'asistente' : 'asistentes'}.</p>
+            {songRecommendation && <p>También guardamos tu canción recomendada: <strong>{songRecommendation}</strong>.</p>}
           </div>
 
           <div className="whatsapp-confirm-box">
             <span className="whatsapp-logo"><WhatsAppIcon /></span>
             <div>
               <strong>Ahora avísanos por WhatsApp</strong>
-              <p>Solo toca uno de los botones. El mensaje ya está listo con tus datos.</p>
+              <p>Elige a María Paz o Vanessa. El mensaje ya está preparado con tu registro.</p>
             </div>
           </div>
 
@@ -127,7 +146,7 @@ export function RsvpSection() {
           <div className="seat-selector">
             <span>¿Cuántas personas asistirán?</span>
             <div className="seat-options">
-              {[1, 2, 3, 4].map((value) => (
+              {[1, 2].map((value) => (
                 <button
                   type="button"
                   className={attendees === value ? 'active' : ''}
@@ -138,7 +157,20 @@ export function RsvpSection() {
                 </button>
               ))}
             </div>
+            <small className="seat-limit-note">Máximo 2 asistentes por registro.</small>
           </div>
+
+          <label className="song-recommendation-field">
+            <span>Recomiéndanos una canción <small>(opcional)</small></span>
+            <input
+              type="text"
+              value={songRecommendation}
+              onChange={(event) => setSongRecommendation(event.target.value.slice(0, 160))}
+              placeholder="Canción y artista"
+              maxLength={160}
+            />
+            <small>La recomendación quedará asociada a tu nombre en el panel administrativo.</small>
+          </label>
 
           {error && <p className="form-error">{error}</p>}
 
