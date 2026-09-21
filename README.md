@@ -1,9 +1,22 @@
-# Invitación María Paz — V1.6
+# Invitación María Paz XV — V1.8
 
-Invitación digital en React + Vite + TypeScript + Supabase.
+Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y publicada en GitHub Pages.
 
-## Flujo actual
+## Correcciones V1.8
 
-Se comparte un único enlace público. Cada invitado abre la tarjeta, registra nombre, celular y número de asistentes (1 a 4). El registro queda guardado en Supabase y, al finalizar, aparecen botones grandes de WhatsApp para avisar a María Paz o Vanessa que el registro fue realizado.
+- Fotografías provisionales importadas desde `src/assets/images` para que Vite las incluya y versione correctamente en el build de GitHub Pages.
+- `base` de Vite fijado a `/Maria-Paz/` para la publicación en el repositorio actual.
+- Reproductor de la canción elegida usando el embed oficial de YouTube.
+- El reproductor se abre al entrar a la invitación e intenta autoplay después de la interacción del usuario.
+- Si el navegador móvil bloquea autoplay, queda visible el botón Play nativo y un enlace de respaldo a YouTube.
+- Ningún fallo de música o imágenes bloquea el contenido principal.
 
-El panel privado `#/admin` permite consultar todos los registros y el total de personas confirmadas.
+## Publicación
+
+```bash
+git add .
+git commit -m "Corrige fotos y reproductor de musica V1.8"
+git push
+```
+
+GitHub Actions compila y publica automáticamente.

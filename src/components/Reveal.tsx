@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState, type PropsWithChildren } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type PropsWithChildren } from 'react'
 
 type RevealProps = PropsWithChildren<{
   className?: string
   delay?: number
+  style?: CSSProperties
 }>
 
-export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
+export function Reveal({ children, className = '', delay = 0, style }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [visible, setVisible] = useState(false)
 
@@ -31,7 +32,7 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
     <div
       ref={ref}
       className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ ...style, transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>

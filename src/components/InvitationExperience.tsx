@@ -3,6 +3,11 @@ import { DiscoBall } from './DiscoBall'
 import { MusicPlayer } from './MusicPlayer'
 import { Reveal } from './Reveal'
 import { RsvpSection } from './RsvpSection'
+import ref01 from '../assets/images/ref-01.webp'
+import ref02 from '../assets/images/ref-02.webp'
+import ref03 from '../assets/images/ref-03.webp'
+import ref04 from '../assets/images/ref-04.webp'
+import ref05 from '../assets/images/ref-05.webp'
 
 interface InvitationExperienceProps {
   opened: boolean
@@ -19,7 +24,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
 
       {!opened && (
         <section className="gate" aria-label="Abrir invitación">
-          <div className="gate-image" />
+          <div className="gate-image" style={{ backgroundImage: `url(${ref01})` }} />
           <div className="gate-overlay" />
           <DiscoBall />
           <div className="gate-content">
@@ -41,7 +46,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
       {opened && (
         <>
           <section className="hero section-dark">
-            <div className="hero-photo" />
+            <div className="hero-photo" style={{ backgroundImage: `url(${ref05})` }} />
             <div className="hero-gradient" />
             <div className="ambient ambient-one" />
             <div className="ambient ambient-two" />
@@ -71,7 +76,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
           </section>
 
           <section className="portrait-break">
-            <div className="portrait-break__image" />
+            <div className="portrait-break__image" style={{ backgroundImage: `url(${ref04})` }} />
             <div className="portrait-break__veil" />
             <Reveal className="portrait-quote">
               <span>Una historia</span>
@@ -120,7 +125,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
           </section>
 
           <section className="dress-section section-dark">
-            <div className="dress-photo" />
+            <div className="dress-photo" style={{ backgroundImage: `url(${ref03})` }} />
             <div className="dress-overlay" />
             <Reveal className="dress-copy">
               <span className="eyebrow">Dress code</span>
@@ -163,14 +168,14 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               <h2>Una noche. Mil recuerdos.</h2>
             </Reveal>
             <div className="editorial-gallery">
-              <Reveal className="gallery-image gallery-image--one" />
-              <Reveal className="gallery-image gallery-image--two" delay={100} />
-              <Reveal className="gallery-image gallery-image--three" delay={180} />
+              <Reveal className="gallery-image gallery-image--one" style={{ backgroundImage: `url(${ref01})` }} />
+              <Reveal className="gallery-image gallery-image--two" delay={100} style={{ backgroundImage: `url(${ref02})` }} />
+              <Reveal className="gallery-image gallery-image--three" delay={180} style={{ backgroundImage: `url(${ref05})` }} />
             </div>
           </section>
 
           <section className="final-section section-dark">
-            <div className="final-photo" />
+            <div className="final-photo" style={{ backgroundImage: `url(${ref01})` }} />
             <div className="final-overlay" />
             <Reveal className="final-copy">
               <span className="eyebrow">Gracias por ser parte de nuestra historia</span>

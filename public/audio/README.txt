@@ -1,4 +1,2 @@
-Pista provisional original creada para esta invitacion.
-Archivo usado por la web: maria-paz.mp3
-Duracion aproximada: 60 segundos, en bucle.
-Puede reemplazarse por la cancion definitiva conservando exactamente el mismo nombre de archivo.
+La V1.7 reproduce la canción elegida desde YouTube mediante un iframe oculto.
+No se requiere un MP3 local.
