@@ -52,7 +52,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   overflow: hidden;
   background: #09080b;
 }
-.gate-image { position: absolute; inset: 0; background: url('/images/ref-01.webp') center 46% / cover no-repeat; filter: saturate(.72) contrast(1.03); transform: scale(1.04); animation: gateZoom 14s ease-out both; }
+.gate-image { position: absolute; inset: 0; background: url('./images/ref-01.webp') center 46% / cover no-repeat; filter: saturate(.72) contrast(1.03); transform: scale(1.04); animation: gateZoom 14s ease-out both; }
 .gate-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,6,8,.42), rgba(7,6,8,.2) 42%, rgba(7,6,8,.84) 100%), radial-gradient(circle at 50% 32%, transparent 0 18%, rgba(0,0,0,.3) 70%); }
 .gate-content { position: relative; z-index: 3; width: min(92vw, 560px); text-align: center; padding: 26vh 24px 38px; display: flex; flex-direction: column; align-items: center; }
 .gate-kicker { margin: 0 0 8px; text-transform: uppercase; letter-spacing: .31em; font-size: .66rem; font-weight: 700; color: rgba(255,255,255,.74); }
@@ -79,7 +79,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .music-icon { font-family: var(--serif); font-size: 1.35rem; }
 
 .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
-.hero-photo { position: absolute; inset: 0; background: url('/images/ref-05.webp') center 28% / cover no-repeat; filter: saturate(.7) contrast(1.05); }
+.hero-photo { position: absolute; inset: 0; background: url('./images/ref-05.webp') center 28% / cover no-repeat; filter: saturate(.7) contrast(1.05); }
 .hero-gradient { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,7,10,.08), rgba(8,7,10,.08) 45%, rgba(8,7,10,.94) 100%); }
 .hero-copy { position: relative; z-index: 4; width: min(1120px, 100%); margin: 0 auto; padding: 0 26px 12vh; }
 .hero-copy .eyebrow { color: rgba(255,255,255,.72); }
@@ -101,7 +101,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .flower-blur--a { left: -90px; bottom: 10%; }
 
 .portrait-break { position: relative; min-height: 76svh; display: grid; align-items: end; overflow: hidden; }
-.portrait-break__image { position: absolute; inset: 0; background: url('/images/ref-04.webp') center 42% / cover no-repeat; }
+.portrait-break__image { position: absolute; inset: 0; background: url('./images/ref-04.webp') center 42% / cover no-repeat; }
 .portrait-break__veil { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(8,7,10,.83) 100%); }
 .portrait-quote { position: relative; z-index: 2; padding: 0 26px 10vh; width: min(1050px, 100%); margin: 0 auto; display: flex; flex-direction: column; }
 .portrait-quote span { text-transform: uppercase; letter-spacing: .3em; font-size: .7rem; color: var(--pink); }
@@ -135,7 +135,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .outline-button:hover { transform: translateY(-2px); background: rgba(255,255,255,.09); }
 
 .dress-section { min-height: 82svh; position: relative; display: grid; align-items: center; overflow: hidden; }
-.dress-photo { position: absolute; inset: 0 45% 0 0; background: url('/images/ref-03.webp') center 35% / cover no-repeat; filter: saturate(.45); }
+.dress-photo { position: absolute; inset: 0 45% 0 0; background: url('./images/ref-03.webp') center 35% / cover no-repeat; filter: saturate(.45); }
 .dress-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(9,8,11,.06) 18%, rgba(9,8,11,.82) 52%, #09080b 70%); }
 .dress-copy { position: relative; z-index: 2; width: min(1020px, 100%); margin: 0 auto; padding: 90px 26px 90px 54%; }
 .dress-copy h2 { font-family: var(--serif); font-size: clamp(3.2rem, 8vw, 6.2rem); line-height: .86; font-weight: 500; margin: 12px 0 28px; }
@@ -192,12 +192,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .gallery-title h2 { margin-top: 14px; }
 .editorial-gallery { width: min(1060px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1.05fr .8fr 1.05fr; align-items: end; gap: 14px; }
 .gallery-image { min-height: 520px; background-size: cover; background-position: center; box-shadow: var(--shadow); }
-.gallery-image--one { background-image: url('/images/ref-01.webp'); }
-.gallery-image--two { background-image: url('/images/ref-02.webp'); min-height: 420px; filter: grayscale(1); }
-.gallery-image--three { background-image: url('/images/ref-05.webp'); }
+.gallery-image--one { background-image: url('./images/ref-01.webp'); }
+.gallery-image--two { background-image: url('./images/ref-02.webp'); min-height: 420px; filter: grayscale(1); }
+.gallery-image--three { background-image: url('./images/ref-05.webp'); }
 
 .final-section { min-height: 100svh; position: relative; display: grid; align-items: end; overflow: hidden; }
-.final-photo { position: absolute; inset: 0; background: url('/images/ref-01.webp') center 36% / cover no-repeat; filter: saturate(.42) contrast(1.05); }
+.final-photo { position: absolute; inset: 0; background: url('./images/ref-01.webp') center 36% / cover no-repeat; filter: saturate(.42) contrast(1.05); }
 .final-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,7,10,.25), rgba(8,7,10,.9) 66%, #09080b 100%); }
 .final-copy { position: relative; z-index: 2; width: min(820px, 100%); margin: 0 auto; padding: 30vh 26px 10vh; text-align: center; }
 .final-copy > p { font-family: var(--serif); font-size: clamp(1.25rem, 3vw, 1.65rem); line-height: 1.6; color: rgba(255,255,255,.8); }
@@ -319,4 +319,46 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+/* RSVP V1.5: registro de invitado + confirmación visual por WhatsApp */
+.rsvp-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0 18px; }
+.rsvp-fields label { display: grid; gap: 8px; font-size: .78rem; color: #6c5e64; }
+.rsvp-fields input { width: 100%; border: 1px solid #ddcfd4; background: #fff; padding: 15px 14px; font-size: 1rem; outline: none; border-radius: 2px; }
+.rsvp-fields input:focus { border-color: #a96e83; box-shadow: 0 0 0 3px rgba(169,110,131,.09); }
+.confirmation-result--stacked { display: grid; grid-template-columns: 1fr; align-items: start; gap: 18px; }
+.confirmation-result--stacked .text-button { grid-column: auto; justify-self: start; }
+.whatsapp-confirm-box { margin-top: 6px; display: grid; grid-template-columns: 54px 1fr; gap: 15px; align-items: center; border: 1px solid #cdebd7; background: #f0fff5; padding: 18px; }
+.whatsapp-confirm-box strong { display: block; color: #123d23; font-size: 1rem; }
+.whatsapp-confirm-box p { margin: 5px 0 0; color: #4e6e59; font-size: .8rem; line-height: 1.45; }
+.whatsapp-logo { width: 54px; height: 54px; display: grid; place-items: center; color: #25D366; }
+.whatsapp-svg { width: 42px; height: 42px; display: block; flex: 0 0 auto; }
+.whatsapp-logo .whatsapp-svg { width: 54px; height: 54px; }
+.whatsapp-grid--hero { margin-top: 0; gap: 12px; }
+.whatsapp-grid--hero a { min-height: 76px; border: 0; border-radius: 999px; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px 20px; box-shadow: 0 12px 28px rgba(37,211,102,.25); }
+.whatsapp-grid--hero a:hover { transform: translateY(-1px); }
+.whatsapp-grid--hero a > span:last-child { display: grid; text-align: left; gap: 2px; }
+.whatsapp-grid--hero strong { font-size: .95rem; }
+.whatsapp-grid--hero small { font-size: .66rem; opacity: .9; }
+
+@media (max-width: 680px) {
+  .rsvp-fields { grid-template-columns: 1fr; }
+  .whatsapp-grid--hero { grid-template-columns: 1fr; }
+  .whatsapp-grid--hero a { min-height: 70px; }
+}
+
+
+/* V1.6 - registro publico */
+.stats-grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+.admin-card--wide { width: 100%; }
+.guest-row--registration { grid-template-columns: minmax(220px, 1fr) 120px 130px 170px; }
+.reserved-card h2 { font-size: clamp(2.25rem, 7vw, 4.5rem); }
+.reserved-card > p { max-width: 560px; margin: 0 auto; line-height: 1.7; }
+@media (max-width: 720px) {
+  .stats-grid--compact { grid-template-columns: 1fr 1fr; }
+  .guest-row--registration { grid-template-columns: 1fr auto; }
+  .guest-row--registration > small:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .stats-grid--compact { grid-template-columns: 1fr; }
 }

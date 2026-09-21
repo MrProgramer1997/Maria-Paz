@@ -1,15 +1,13 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
-import { adminLogin, adminLogout, createInvitation, getAdminInvitations } from '../services/invitationService'
-import type { AdminInvitation } from '../types/invitation'
+import { adminLogin, adminLogout, getRegistrations } from '../services/invitationService'
+import type { Registration } from '../types/invitation'
 
 export function AdminPage() {
   const [loggedIn, setLoggedIn] = useState(!isSupabaseConfigured)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [items, setItems] = useState<AdminInvitation[]>([])
-  const [name, setName] = useState('')
-  const [seats, setSeats] = useState(1)
+  const [items, setItems] = useState<Registration[]>([])
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
 
@@ -29,10 +27,11 @@ export function AdminPage() {
 
   async function loadItems() {
     setLoading(true)
+    setMessage('')
     try {
-      setItems(await getAdminInvitations())
+      setItems(await getRegistrations())
     } catch {
-      setMessage('No fue posible cargar las invitaciones. Revisa permisos de administrador.')
+      setMessage('No fue posible cargar los registros. Revisa los permisos del administrador.')
     } finally {
       setLoading(false)
     }
@@ -56,47 +55,18 @@ export function AdminPage() {
     setItems([])
   }
 
-  async function addInvitation(event: FormEvent) {
-    event.preventDefault()
-    if (!name.trim()) return
-    setMessage('')
-
-    try {
-      if (!isSupabaseConfigured) {
-        setMessage('Modo demo: configura Supabase para crear invitaciones reales.')
-        return
-      }
-      await createInvitation(name.trim(), seats)
-      setName('')
-      setSeats(1)
-      await loadItems()
-    } catch {
-      setMessage('No se pudo crear la invitación.')
-    }
-  }
-
-  const stats = useMemo(() => {
-    const totalInvitations = items.length
-    const totalSeats = items.reduce((sum, item) => sum + item.seats, 0)
-    const confirmed = items.reduce((sum, item) => sum + (item.rsvps?.[0]?.attends ? item.rsvps[0].confirmed_seats : 0), 0)
-    const pending = items.filter((item) => !item.rsvps?.length).length
-    const declined = items.filter((item) => item.rsvps?.[0] && !item.rsvps[0].attends).length
-    return { totalInvitations, totalSeats, confirmed, pending, declined }
-  }, [items])
-
-  function copyLink(code: string) {
-    const url = `${window.location.origin}${window.location.pathname}?i=${encodeURIComponent(code)}`
-    navigator.clipboard.writeText(url)
-    setMessage('Enlace copiado.')
-  }
+  const stats = useMemo(() => ({
+    registrations: items.length,
+    attendees: items.reduce((sum, item) => sum + item.attendees, 0),
+  }), [items])
 
   if (!loggedIn) {
     return (
       <main className="admin-shell admin-login-shell">
         <form className="admin-login" onSubmit={login}>
           <span className="admin-brand">MARÍA PAZ · XV</span>
-          <h1>Panel de invitados</h1>
-          <p>Acceso privado para administrar invitaciones y confirmaciones.</p>
+          <h1>Panel de registros</h1>
+          <p>Acceso privado para consultar asistentes registrados.</p>
           <label>
             Correo
             <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
@@ -118,8 +88,8 @@ export function AdminPage() {
       <header className="admin-header">
         <div>
           <span className="admin-brand">MARÍA PAZ · XV</span>
-          <h1>Invitados</h1>
-          <p>Control de cupos y confirmaciones.</p>
+          <h1>Registros</h1>
+          <p>Personas que confirmaron su asistencia desde la invitación.</p>
         </div>
         <div className="admin-actions">
           {!isSupabaseConfigured && <span className="demo-badge">Modo demo</span>}
@@ -128,65 +98,41 @@ export function AdminPage() {
         </div>
       </header>
 
-      <section className="stats-grid">
-        <article><span>Invitaciones</span><strong>{stats.totalInvitations}</strong></article>
-        <article><span>Personas invitadas</span><strong>{stats.totalSeats}</strong></article>
-        <article><span>Confirmados</span><strong>{stats.confirmed}</strong></article>
-        <article><span>Pendientes</span><strong>{stats.pending}</strong></article>
-        <article><span>No asistirán</span><strong>{stats.declined}</strong></article>
+      <section className="stats-grid stats-grid--compact">
+        <article><span>Registros</span><strong>{stats.registrations}</strong></article>
+        <article><span>Personas confirmadas</span><strong>{stats.attendees}</strong></article>
       </section>
 
-      <section className="admin-grid">
-        <form className="admin-card create-card" onSubmit={addInvitation}>
-          <span className="eyebrow">Nueva invitación</span>
-          <h2>Crear invitado</h2>
-          <label>
-            Nombre o familia
-            <input value={name} onChange={(event) => setName(event.target.value)} placeholder="Ej. Familia Gómez" required />
-          </label>
-          <label>
-            Cupos reservados
-            <select value={seats} onChange={(event) => setSeats(Number(event.target.value))}>
-              {[1, 2, 3, 4, 5, 6].map((value) => <option value={value} key={value}>{value}</option>)}
-            </select>
-          </label>
-          <button className="primary-button" type="submit">Crear invitación</button>
-          {message && <p className="admin-message">{message}</p>}
-        </form>
-
-        <section className="admin-card guest-list-card">
-          <div className="guest-list-heading">
-            <div>
-              <span className="eyebrow">Listado</span>
-              <h2>Invitaciones creadas</h2>
-            </div>
-            <button type="button" className="text-button" onClick={loadItems}>Actualizar</button>
+      <section className="admin-card guest-list-card admin-card--wide">
+        <div className="guest-list-heading">
+          <div>
+            <span className="eyebrow">Asistencia</span>
+            <h2>Personas registradas</h2>
           </div>
+          <button type="button" className="text-button" onClick={loadItems}>Actualizar</button>
+        </div>
 
-          {loading ? (
-            <p className="admin-empty">Cargando…</p>
-          ) : items.length === 0 ? (
-            <p className="admin-empty">Todavía no hay invitaciones.</p>
-          ) : (
-            <div className="guest-list">
-              {items.map((item) => {
-                const rsvp = item.rsvps?.[0]
-                const status = !rsvp ? 'Pendiente' : rsvp.attends ? 'Confirmado' : 'No asiste'
-                return (
-                  <article className="guest-row" key={item.id}>
-                    <div className="guest-main">
-                      <strong>{item.display_name}</strong>
-                      <small>{item.seats} {item.seats === 1 ? 'cupo' : 'cupos'}</small>
-                    </div>
-                    <span className={`status status--${status.toLowerCase().replace(' ', '-')}`}>{status}</span>
-                    <span className="guest-confirmed">{rsvp?.attends ? `${rsvp.confirmed_seats} confirmados` : '—'}</span>
-                    <button type="button" className="copy-button" onClick={() => copyLink(item.code)}>Copiar enlace</button>
-                  </article>
-                )
-              })}
-            </div>
-          )}
-        </section>
+        {message && <p className="admin-message">{message}</p>}
+
+        {loading ? (
+          <p className="admin-empty">Cargando…</p>
+        ) : items.length === 0 ? (
+          <p className="admin-empty">Todavía no hay personas registradas.</p>
+        ) : (
+          <div className="guest-list">
+            {items.map((item) => (
+              <article className="guest-row guest-row--registration" key={item.id}>
+                <div className="guest-main">
+                  <strong>{item.full_name}</strong>
+                  <small>{item.phone}</small>
+                </div>
+                <span className="status status--confirmado">Confirmado</span>
+                <span className="guest-confirmed">{item.attendees} {item.attendees === 1 ? 'persona' : 'personas'}</span>
+                <small>{new Date(item.created_at).toLocaleString('es-CO')}</small>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   )

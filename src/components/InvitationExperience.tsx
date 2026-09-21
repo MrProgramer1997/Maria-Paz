@@ -3,19 +3,15 @@ import { DiscoBall } from './DiscoBall'
 import { MusicPlayer } from './MusicPlayer'
 import { Reveal } from './Reveal'
 import { RsvpSection } from './RsvpSection'
-import type { InvitationData } from '../types/invitation'
 
 interface InvitationExperienceProps {
-  invitation: InvitationData
-  code: string
   opened: boolean
   onOpen: () => void
 }
 
 const MAPS_URL = 'https://maps.app.goo.gl/WqBaVeuKRCTwKpDR8'
 
-export function InvitationExperience({ invitation, code, opened, onOpen }: InvitationExperienceProps) {
-  const oneSeat = invitation.seats === 1
+export function InvitationExperience({ opened, onOpen }: InvitationExperienceProps) {
 
   return (
     <main className={`invitation ${opened ? 'invitation--opened' : ''}`}>
@@ -33,7 +29,7 @@ export function InvitationExperience({ invitation, code, opened, onOpen }: Invit
             </h1>
             <span className="gate-subtitle">Mis quince años</span>
             <div className="gate-divider"><i /><span>XV</span><i /></div>
-            <p className="gate-guest">Para {invitation.display_name}</p>
+            <p className="gate-guest">Una invitación para compartir</p>
             <button type="button" className="open-button" onClick={onOpen}>
               <span>Descubrir mi invitación</span>
               <b>↓</b>
@@ -137,24 +133,15 @@ export function InvitationExperience({ invitation, code, opened, onOpen }: Invit
 
           <section className="reserved-section section-light">
             <Reveal className="reserved-card">
-              <span className="eyebrow">Esta invitación es para</span>
-              <h2>{invitation.display_name}</h2>
-              <p>Hemos reservado</p>
-              <strong className="reserved-number">{invitation.seats}</strong>
-              <p className="reserved-label">
-                {oneSeat ? 'lugar en tu honor' : 'lugares en tu honor'}
-              </p>
+              <span className="eyebrow">Queremos compartirlo contigo</span>
+              <h2>Tu presencia hace especial esta noche.</h2>
+              <p>Regístrate a continuación para confirmar cuántas personas nos acompañarán.</p>
             </Reveal>
           </section>
 
           <section className="rsvp-section section-pink">
             <Reveal>
-              <RsvpSection
-                code={code}
-                seats={invitation.seats}
-                initialStatus={invitation.attendance_status}
-                initialConfirmedSeats={invitation.confirmed_seats}
-              />
+              <RsvpSection />
             </Reveal>
           </section>
 

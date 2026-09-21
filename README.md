@@ -1,48 +1,9 @@
-# Invitación digital — María Paz XV
+# Invitación María Paz — V1.6
 
-Versión 1.3.0.
+Invitación digital en React + Vite + TypeScript + Supabase.
 
-## Stack
-- React 19 + Vite + TypeScript
-- Supabase para invitados, RSVP y autenticación administrativa
-- GitHub Pages + GitHub Actions
+## Flujo actual
 
-## Supabase
-El proyecto está conectado a `Proyecto Cumple` mediante su URL pública y **publishable key**.
-Estos valores son públicos por diseño en aplicaciones web; la seguridad de los datos depende de RLS y de las políticas del proyecto.
-Nunca colocar una `secret key` ni `service_role` en el frontend.
+Se comparte un único enlace público. Cada invitado abre la tarjeta, registra nombre, celular y número de asistentes (1 a 4). El registro queda guardado en Supabase y, al finalizar, aparecen botones grandes de WhatsApp para avisar a María Paz o Vanessa que el registro fue realizado.
 
-La base ya contempla:
-- `invitations`
-- `rsvps`
-- `invitation_admins`
-- RLS
-- RPC pública controlada para consultar una invitación por código
-- RPC pública controlada para registrar una confirmación
-
-## Panel administrativo
-Ruta: `#/admin`
-
-El panel NO tiene una contraseña fija dentro del código. Usa Supabase Auth con correo y contraseña. Primero debe existir un usuario en Supabase Auth y su UUID debe estar autorizado en `public.invitation_admins`.
-
-## Música
-La versión incluye una pista instrumental original provisional en:
-
-`public/audio/maria-paz.mp3`
-
-Cuando se defina la canción final, basta con reemplazar ese archivo conservando el mismo nombre.
-
-## Publicación
-```bash
-git add .
-git commit -m "Conecta Supabase y agrega musica provisional"
-git push
-```
-
-GitHub Actions compila y publica automáticamente.
-
-
-## v1.4
-- Corrige el despliegue de GitHub Actions cuando no existe `package-lock.json`.
-- Se elimina el cache de npm en `setup-node`, por lo que el workflow ya no exige lockfile.
-- Se fija el runner en Ubuntu 24.04 para evitar el aviso de migración de `ubuntu-latest`.
+El panel privado `#/admin` permite consultar todos los registros y el total de personas confirmadas.
