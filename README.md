@@ -1,8 +1,8 @@
-# Invitación María Paz XV — V1.8
+# Invitación María Paz XV — V1.9
 
 Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y publicada en GitHub Pages.
 
-## Correcciones V1.8
+## Correcciones V1.9
 
 - Fotografías provisionales importadas desde `src/assets/images` para que Vite las incluya y versione correctamente en el build de GitHub Pages.
 - `base` de Vite fijado a `/Maria-Paz/` para la publicación en el repositorio actual.
@@ -15,8 +15,17 @@ Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y 
 
 ```bash
 git add .
-git commit -m "Corrige fotos y reproductor de musica V1.8"
+git commit -m "Corrige fotos y reproductor de musica V1.9"
 git push
 ```
 
 GitHub Actions compila y publica automáticamente.
+
+
+## V1.9 - reproductor compacto
+El reproductor de YouTube se redujo a un mini reproductor flotante 16:9 para no tapar la tarjeta. Se conserva la animación del botón Música y el acceso directo a los controles del reproductor.
+
+
+## V1.10
+- Corrige el registro publico para usuarios anonimos y sesiones autenticadas.
+- Mantiene el aviso posterior por WhatsApp a Maria Paz o Vanessa.
