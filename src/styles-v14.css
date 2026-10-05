@@ -1,0 +1,226 @@
+/* Fotografías reales y ajustes editoriales V1.14 */
+
+.gate--real .gate-image--confetti {
+  background-position: 66% 42%;
+  filter: saturate(.9) contrast(1.03);
+}
+.gate--real .gate-overlay {
+  background:
+    linear-gradient(180deg, rgba(7,6,8,.24), rgba(7,6,8,.12) 34%, rgba(7,6,8,.86) 100%),
+    linear-gradient(90deg, rgba(7,6,8,.5), transparent 72%);
+}
+
+.hero--real .hero-photo--portrait {
+  background-position: 58% 35%;
+  filter: saturate(.9) contrast(1.02);
+}
+.hero--real .hero-gradient {
+  background:
+    linear-gradient(180deg, rgba(8,7,10,.04), rgba(8,7,10,.1) 46%, rgba(8,7,10,.93) 100%),
+    linear-gradient(90deg, rgba(8,7,10,.18), transparent 62%);
+}
+
+.portrait-break--cake .portrait-break__image--cake {
+  background-position: center 52%;
+  filter: saturate(.94) contrast(1.02);
+}
+.portrait-break--cake .portrait-break__veil {
+  background: linear-gradient(180deg, rgba(8,7,10,.05) 16%, rgba(8,7,10,.14) 50%, rgba(8,7,10,.9) 100%);
+}
+
+.event-editorial-visuals {
+  width: min(1000px, 100%);
+  margin: 0 auto 22px;
+  display: grid;
+  grid-template-columns: .86fr 1.14fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.event-editorial-photo {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #111014;
+}
+.event-editorial-photo img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  display: block;
+}
+.event-editorial-photo--save-date img {
+  object-position: 48% 46%;
+  filter: contrast(1.02);
+}
+.event-editorial-photo--newspaper img {
+  object-position: 50% 46%;
+}
+
+.dress-section--black {
+  min-height: 76svh;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(238,188,205,.08), transparent 18%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.035), transparent 44%),
+    #070609;
+}
+.dress-black-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 0 72%, rgba(238,188,205,.035)),
+    repeating-linear-gradient(90deg, transparent 0 80px, rgba(255,255,255,.012) 81px 82px);
+  pointer-events: none;
+}
+.dress-copy--centered {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 110px 26px;
+  text-align: center;
+}
+.dress-copy--centered h2,
+.dress-copy--centered .color-chip {
+  margin-inline: auto;
+}
+.dress-section--black .dress-photo,
+.dress-section--black .dress-overlay {
+  display: none;
+}
+
+.reserved-section--photo {
+  position: relative;
+  min-height: 88svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  padding: 0;
+  background: #0a090b;
+}
+.reserved-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 41%;
+  background-repeat: no-repeat;
+  filter: saturate(.88) contrast(1.02);
+}
+.reserved-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,6,8,.06) 0 34%, rgba(7,6,8,.28) 58%, rgba(7,6,8,.88) 100%),
+    linear-gradient(90deg, rgba(7,6,8,.2), transparent 68%);
+}
+.reserved-card--over-photo {
+  z-index: 2;
+  width: min(760px, calc(100% - 44px));
+  margin: 0 auto 8vh;
+  padding: 44px 30px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(12,10,13,.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 70px rgba(0,0,0,.3);
+}
+.reserved-card--over-photo h2 {
+  color: #fff;
+}
+.reserved-card--over-photo > p {
+  color: rgba(255,255,255,.78);
+}
+.reserved-card--over-photo .eyebrow {
+  color: var(--pink);
+}
+
+.editorial-gallery--real .gallery-image--one {
+  background-position: 64% 43%;
+  filter: none;
+}
+.editorial-gallery--real .gallery-image--two {
+  background-position: 48% 44%;
+  filter: grayscale(1) contrast(1.03);
+}
+.editorial-gallery--real .gallery-image--three {
+  background-position: center 46%;
+  filter: none;
+}
+
+.final-section--family .final-photo--family {
+  background-position: center 34%;
+  filter: saturate(.82) contrast(1.02);
+}
+.final-section--family .final-overlay--family {
+  background:
+    linear-gradient(180deg, rgba(8,7,10,.05) 0 42%, rgba(8,7,10,.48) 63%, rgba(8,7,10,.96) 100%),
+    linear-gradient(90deg, rgba(8,7,10,.08), transparent 50%, rgba(8,7,10,.08));
+}
+.final-copy--family {
+  padding-top: 54vh;
+}
+
+@media (max-width: 760px) {
+  .gate--real .gate-image--confetti {
+    background-position: 68% 40%;
+  }
+  .gate--real .gate-content {
+    padding-top: 31vh;
+  }
+  .hero--real .hero-photo--portrait {
+    background-position: 60% 31%;
+  }
+  .hero--real .hero-copy {
+    padding-bottom: 10vh;
+  }
+  .portrait-break--cake {
+    min-height: 72svh;
+  }
+  .portrait-break--cake .portrait-break__image--cake {
+    background-position: center 48%;
+  }
+  .event-editorial-visuals {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .event-editorial-photo {
+    min-height: 72svh;
+  }
+  .event-editorial-photo--newspaper {
+    min-height: 56svh;
+  }
+  .dress-section--black {
+    min-height: 70svh;
+  }
+  .dress-copy--centered {
+    padding: 90px 26px;
+  }
+  .reserved-section--photo {
+    min-height: 92svh;
+  }
+  .reserved-photo {
+    background-position: 50% 42%;
+  }
+  .reserved-card--over-photo {
+    width: calc(100% - 28px);
+    margin-bottom: 4vh;
+    padding: 34px 22px;
+  }
+  .final-section--family .final-photo--family {
+    background-position: center 25%;
+  }
+  .final-copy--family {
+    padding: 52vh 22px 8vh;
+  }
+  .final-copy--family > p {
+    font-size: 1.08rem;
+    line-height: 1.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate--real .gate-image--confetti {
+    animation: none;
+    transform: none;
+  }
+}
