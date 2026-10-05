@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { InvitationExperience } from './components/v14/InvitationExperienceV14'
+import { InvitationExperience } from './components/InvitationExperience'
 import { AdminPage } from './pages/AdminPage'
 
 function isAdminRoute() {
