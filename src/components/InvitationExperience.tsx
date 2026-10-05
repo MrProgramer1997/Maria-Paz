@@ -3,11 +3,13 @@ import { DiscoBall } from './DiscoBall'
 import { MusicPlayer } from './MusicPlayer'
 import { Reveal } from './Reveal'
 import { RsvpSection } from './RsvpSection'
-import ref01 from '../assets/images/ref-01.webp'
-import ref02 from '../assets/images/ref-02.webp'
-import ref03 from '../assets/images/ref-03.webp'
-import ref04 from '../assets/images/ref-04.webp'
-import ref05 from '../assets/images/ref-05.webp'
+import heroConfetti from '../assets/images/hero-confetti.webp'
+import portraitBrown from '../assets/images/portrait-brown.webp'
+import saveDate from '../assets/images/save-date.webp'
+import newspaper from '../assets/images/newspaper.webp'
+import cakeBlur from '../assets/images/cake-blur.webp'
+import cakeDisco from '../assets/images/cake-disco.webp'
+import family from '../assets/images/family.webp'
 
 interface InvitationExperienceProps {
   opened: boolean
@@ -17,14 +19,13 @@ interface InvitationExperienceProps {
 const MAPS_URL = 'https://maps.app.goo.gl/WqBaVeuKRCTwKpDR8'
 
 export function InvitationExperience({ opened, onOpen }: InvitationExperienceProps) {
-
   return (
     <main className={`invitation ${opened ? 'invitation--opened' : ''}`}>
       <MusicPlayer active={opened} />
 
       {!opened && (
         <section className="gate" aria-label="Abrir invitación">
-          <div className="gate-image" style={{ backgroundImage: `url(${ref01})` }} />
+          <div className="gate-image gate-image--real" style={{ backgroundImage: `url(${heroConfetti})` }} />
           <div className="gate-overlay" />
           <DiscoBall />
           <div className="gate-content">
@@ -46,7 +47,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
       {opened && (
         <>
           <section className="hero section-dark">
-            <div className="hero-photo" style={{ backgroundImage: `url(${ref05})` }} />
+            <div className="hero-photo hero-photo--real" style={{ backgroundImage: `url(${heroConfetti})` }} />
             <div className="hero-gradient" />
             <div className="ambient ambient-one" />
             <div className="ambient ambient-two" />
@@ -75,8 +76,8 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="portrait-break">
-            <div className="portrait-break__image" style={{ backgroundImage: `url(${ref04})` }} />
+          <section className="portrait-break portrait-break--real">
+            <div className="portrait-break__image portrait-break__image--real" style={{ backgroundImage: `url(${portraitBrown})` }} />
             <div className="portrait-break__veil" />
             <Reveal className="portrait-quote">
               <span>Una historia</span>
@@ -84,8 +85,10 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="countdown-section section-dark">
-            <Reveal>
+          <section className="countdown-section countdown-section--photo section-dark">
+            <div className="countdown-photo" style={{ backgroundImage: `url(${saveDate})` }} />
+            <div className="countdown-photo-overlay" />
+            <Reveal className="countdown-content">
               <span className="eyebrow">Falta muy poco</span>
               <h2>La noche que soñamos</h2>
               <Countdown />
@@ -123,12 +126,27 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
                 </a>
               </Reveal>
             </div>
+
+            <Reveal className="event-editorial-photo" delay={120}>
+              <div className="event-editorial-photo__image" style={{ backgroundImage: `url(${newspaper})` }} />
+              <div className="event-editorial-photo__caption">
+                <span>Special edition · Vol. 15</span>
+                <strong>La estrella de la noche está lista para brillar.</strong>
+              </div>
+            </Reveal>
           </section>
 
-          <section className="dress-section section-dark">
-            <div className="dress-photo" style={{ backgroundImage: `url(${ref03})` }} />
-            <div className="dress-overlay" />
-            <Reveal className="dress-copy">
+          <section className="memory-break">
+            <div className="memory-break__image" style={{ backgroundImage: `url(${cakeBlur})` }} />
+            <div className="memory-break__overlay" />
+            <Reveal className="memory-break__copy">
+              <span>XV</span>
+              <strong>Un deseo, una noche, un recuerdo para siempre.</strong>
+            </Reveal>
+          </section>
+
+          <section className="dress-section section-dark dress-section--black">
+            <Reveal className="dress-copy dress-copy--centered">
               <span className="eyebrow">Dress code</span>
               <h2>Black is the mood.</h2>
               <div className="color-chip"><span /></div>
@@ -168,17 +186,17 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               <span className="eyebrow">María Paz</span>
               <h2>Una noche. Mil recuerdos.</h2>
             </Reveal>
-            <div className="editorial-gallery">
-              <Reveal className="gallery-image gallery-image--one" style={{ backgroundImage: `url(${ref01})` }} />
-              <Reveal className="gallery-image gallery-image--two" delay={100} style={{ backgroundImage: `url(${ref02})` }} />
-              <Reveal className="gallery-image gallery-image--three" delay={180} style={{ backgroundImage: `url(${ref05})` }} />
+            <div className="editorial-gallery editorial-gallery--real">
+              <Reveal className="gallery-image gallery-image--one" style={{ backgroundImage: `url(${cakeDisco})` }} />
+              <Reveal className="gallery-image gallery-image--two" delay={100} style={{ backgroundImage: `url(${portraitBrown})` }} />
+              <Reveal className="gallery-image gallery-image--three" delay={180} style={{ backgroundImage: `url(${newspaper})` }} />
             </div>
           </section>
 
-          <section className="final-section section-dark">
-            <div className="final-photo" style={{ backgroundImage: `url(${ref01})` }} />
-            <div className="final-overlay" />
-            <Reveal className="final-copy">
+          <section className="final-section section-dark final-section--family">
+            <div className="final-photo final-photo--family" style={{ backgroundImage: `url(${family})` }} />
+            <div className="final-overlay final-overlay--family" />
+            <Reveal className="final-copy final-copy--family">
               <span className="eyebrow">Gracias por ser parte de nuestra historia</span>
               <p>
                 Los momentos más hermosos de la vida se convierten en recuerdos para siempre cuando los

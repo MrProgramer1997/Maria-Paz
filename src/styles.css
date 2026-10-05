@@ -409,3 +409,222 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 720px) {
   .stats-grid--three { grid-template-columns: 1fr; }
 }
+
+/* V1.14 — fotografías reales y composición editorial */
+.gate-image--real {
+  background-position: 58% 42%;
+  filter: saturate(.86) contrast(1.02) brightness(.88);
+}
+.hero-photo--real {
+  background-position: 60% 34%;
+  filter: saturate(.9) contrast(1.02) brightness(.92);
+}
+
+.portrait-break--real { min-height: 82svh; }
+.portrait-break__image--real { background-position: 55% 34%; }
+.portrait-break__veil {
+  background: linear-gradient(180deg, rgba(8,7,10,.04) 20%, rgba(8,7,10,.25) 52%, rgba(8,7,10,.9) 100%);
+}
+
+.countdown-section--photo {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+.countdown-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 44%;
+  filter: grayscale(1) contrast(1.04) brightness(.72);
+  transform: scale(1.015);
+}
+.countdown-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,6,9,.36), rgba(7,6,9,.7) 54%, rgba(7,6,9,.93));
+}
+.countdown-content { position: relative; z-index: 2; width: min(820px, 100%); }
+.countdown-section--photo .eyebrow { color: var(--pink); }
+.countdown-section--photo .countdown {
+  background: rgba(7,6,9,.34);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255,255,255,.26);
+}
+
+.event-editorial-photo {
+  position: relative;
+  width: min(1060px, 100%);
+  min-height: 72svh;
+  margin: 64px auto 0;
+  overflow: hidden;
+  background: #0a090b;
+  box-shadow: var(--shadow);
+}
+.event-editorial-photo__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 42%;
+  filter: saturate(.9) contrast(1.02);
+  transition: transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+.event-editorial-photo.is-visible .event-editorial-photo__image { transform: scale(1.025); }
+.event-editorial-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 46%, rgba(8,7,10,.84) 100%);
+}
+.event-editorial-photo__caption {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 34px clamp(24px, 5vw, 54px) 38px;
+  display: grid;
+  gap: 8px;
+  color: #fff;
+}
+.event-editorial-photo__caption span {
+  color: var(--pink);
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-weight: 700;
+}
+.event-editorial-photo__caption strong {
+  max-width: 680px;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 4.8vw, 3.3rem);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.memory-break {
+  position: relative;
+  min-height: 82svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: #0a090b;
+}
+.memory-break__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 46%;
+  filter: saturate(.86) contrast(1.02);
+  transform: scale(1.02);
+}
+.memory-break__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9,8,11,.08) 20%, rgba(9,8,11,.2) 48%, rgba(9,8,11,.88) 100%);
+}
+.memory-break__copy {
+  position: relative;
+  z-index: 2;
+  width: min(1020px, 100%);
+  margin: 0 auto;
+  padding: 0 26px 9vh;
+  display: grid;
+  gap: 10px;
+  color: #fff;
+}
+.memory-break__copy span {
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  font-size: .7rem;
+  font-weight: 700;
+}
+.memory-break__copy strong {
+  max-width: 700px;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  line-height: .92;
+  font-weight: 400;
+}
+
+.dress-section--black {
+  min-height: 74svh;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255,255,255,.035), transparent 34%),
+    #050506;
+}
+.dress-section--black::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255,255,255,.08);
+  pointer-events: none;
+}
+.dress-copy--centered {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 100px 26px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dress-copy--centered h2 { margin-bottom: 34px; }
+.dress-copy--centered .color-chip { margin: 0 auto; }
+
+.editorial-gallery--real .gallery-image--one { background-position: center 38%; }
+.editorial-gallery--real .gallery-image--two { background-position: 56% 38%; filter: none; }
+.editorial-gallery--real .gallery-image--three { background-position: center 42%; }
+
+.final-section--family { min-height: 105svh; }
+.final-photo--family {
+  background-position: center 34%;
+  filter: saturate(.72) contrast(1.02) brightness(.88);
+}
+.final-overlay--family {
+  background:
+    linear-gradient(180deg, rgba(7,6,9,.08) 0%, rgba(7,6,9,.22) 42%, rgba(7,6,9,.86) 75%, #09080b 100%),
+    linear-gradient(90deg, rgba(7,6,9,.08), transparent 24%, transparent 76%, rgba(7,6,9,.1));
+}
+.final-copy--family { padding-top: 48vh; }
+.final-copy--family > p { text-shadow: 0 3px 18px rgba(0,0,0,.42); }
+
+@media (max-width: 720px) {
+  .gate-image--real { background-position: 61% 40%; }
+  .hero-photo--real { background-position: 62% 34%; }
+  .portrait-break__image--real { background-position: 55% 32%; }
+  .countdown-photo { background-position: 50% 40%; }
+  .event-editorial-photo { min-height: 64svh; }
+  .event-editorial-photo__image { background-position: 52% 42%; }
+  .memory-break__image { background-position: center 42%; }
+  .final-photo--family { background-position: 50% 28%; }
+  .final-copy--family { padding-top: 52vh; }
+}
+
+@media (max-width: 560px) {
+  .gate-content { padding-top: 24vh; }
+  .gate-image--real { background-position: 62% 37%; }
+  .hero-photo--real { background-position: 63% 32%; }
+  .hero-gradient { background: linear-gradient(180deg, rgba(8,7,10,.04), rgba(8,7,10,.1) 44%, rgba(8,7,10,.96) 100%); }
+  .portrait-break { min-height: 74svh; }
+  .portrait-break__image--real { background-position: 55% 30%; }
+  .countdown-section--photo { min-height: 88svh; padding: 96px 18px; }
+  .countdown-photo { background-position: center 36%; }
+  .event-editorial-photo { min-height: 58svh; }
+  .event-editorial-photo__caption { padding: 26px 22px 28px; }
+  .memory-break { min-height: 72svh; }
+  .memory-break__copy { padding-bottom: 8vh; }
+  .dress-copy--centered { padding: 90px 22px; }
+  .editorial-gallery--real .gallery-image--one { background-position: center 36%; }
+  .editorial-gallery--real .gallery-image--two { background-position: 57% 31%; }
+  .editorial-gallery--real .gallery-image--three { background-position: 52% 42%; }
+  .final-section--family { min-height: 110svh; }
+  .final-photo--family { background-position: center 20%; }
+  .final-overlay--family { background: linear-gradient(180deg, rgba(7,6,9,.04) 0%, rgba(7,6,9,.18) 38%, rgba(7,6,9,.9) 68%, #09080b 100%); }
+  .final-copy--family { padding: 58vh 22px 9vh; }
+}

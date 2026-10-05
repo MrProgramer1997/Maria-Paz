@@ -1,30 +1,20 @@
-# Invitación María Paz XV — V1.12
+# Invitación María Paz XV — V1.14
 
 Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y publicada en GitHub Pages.
 
-## Estado V1.12
+## Estado V1.14
 
-- Mantiene fotografías importadas desde `src/assets/images`.
-- Mantiene `base: /Maria-Paz/` para GitHub Pages.
-- Mantiene registro público en Supabase con nombre, celular y 1 a 4 asistentes.
-- Mantiene panel administrativo protegido con Supabase Auth.
-- Mantiene aviso posterior por WhatsApp a María Paz o Vanessa.
-- Mantiene la música de YouTube sin video visible; solo aparece el botón Música.
-- Restaura la fecha límite de confirmación: 17 de octubre de 2026.
-- Restaura los textos originales de confirmación y el mensaje final completo.
-- Añade el teléfono informado del lugar de la celebración.
+- Sustituye las fotografías provisionales por las fotografías reales de María Paz.
+- Optimiza las fotografías a WebP para reducir peso sin alterar el diseño.
+- Reorganiza la composición editorial: portada, retrato, Save the Date, celebración, recuerdo, galería y cierre familiar.
+- Mantiene el Dress Code sobre fondo negro, sin fotografía.
+- Usa la fotografía de María Paz con sus papás como fondo del cierre y conserva el texto aprobado.
+- Mantiene la fecha límite de confirmación: 17 de octubre de 2026.
+- Mantiene máximo 2 asistentes por registro, validado también en Supabase.
+- Mantiene el campo opcional para recomendar una canción y su asociación con quien la recomendó.
+- Mantiene panel administrativo, WhatsApp posterior al registro, Google Maps y Lluvia de sobres.
+- La música definitiva queda pendiente. Esta versión no cambia el reproductor actual ni asume que el audio existente sea el final.
 
 ## Publicación
 
-```bash
-git add .
-git commit -m "Restaura contenido aprobado V1.12"
-git push
-```
-
-## Cambios V1.13
-- Máximo 2 asistentes por registro, validado también en Supabase.
-- Campo opcional para recomendar una canción.
-- La canción recomendada se guarda en `registrations.song_recommendation`.
-- El panel administrativo muestra la canción al lado del registro y conserva quién la recomendó.
-- Se mantienen la fecha límite del 17 de octubre, música oculta, WhatsApp, panel admin y fotografías.
+El proyecto continúa preparado para GitHub Pages con `base: /Maria-Paz/`.
