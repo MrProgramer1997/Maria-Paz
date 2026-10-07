@@ -25,7 +25,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
 
       {!opened && (
         <section className="gate" aria-label="Abrir invitación">
-          <div className="gate-image gate-image--real" style={{ backgroundImage: `url(${heroConfetti})` }} />
+          <div className="gate-image gate-image--real" style={{ backgroundImage: `url(${cakeDisco})` }} />
           <div className="gate-overlay" />
           <DiscoBall />
           <div className="gate-content">
@@ -47,7 +47,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
       {opened && (
         <>
           <section className="hero section-dark">
-            <div className="hero-photo hero-photo--real" style={{ backgroundImage: `url(${heroConfetti})` }} />
+            <div className="hero-photo hero-photo--real hero-photo--save-date" style={{ backgroundImage: `url(${saveDate})` }} />
             <div className="hero-gradient" />
             <div className="ambient ambient-one" />
             <div className="ambient ambient-two" />
@@ -77,7 +77,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
           </section>
 
           <section className="portrait-break portrait-break--real">
-            <div className="portrait-break__image portrait-break__image--real" style={{ backgroundImage: `url(${portraitBrown})` }} />
+            <div className="portrait-break__image portrait-break__image--real portrait-break__image--cake" style={{ backgroundImage: `url(${cakeBlur})` }} />
             <div className="portrait-break__veil" />
             <Reveal className="portrait-quote">
               <span>Una historia</span>
@@ -85,10 +85,18 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="countdown-section countdown-section--photo section-dark">
-            <div className="countdown-photo" style={{ backgroundImage: `url(${saveDate})` }} />
-            <div className="countdown-photo-overlay" />
-            <Reveal className="countdown-content">
+          <section className="dress-section section-dark dress-section--black">
+            <Reveal className="dress-copy dress-copy--centered">
+              <span className="eyebrow">Dress code</span>
+              <h2>Black is the mood.</h2>
+              <div className="color-chip"><span /></div>
+              <p>Vestuario en <strong>negro</strong>.</p>
+              <small>Evitar tonos plateados y grises.</small>
+            </Reveal>
+          </section>
+
+          <section className="countdown-section section-dark">
+            <Reveal>
               <span className="eyebrow">Falta muy poco</span>
               <h2>La noche que soñamos</h2>
               <Countdown />
@@ -127,7 +135,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               </Reveal>
             </div>
 
-            <Reveal className="event-editorial-photo" delay={120}>
+            <Reveal className="event-editorial-photo event-editorial-photo--newspaper" delay={120}>
               <div className="event-editorial-photo__image" style={{ backgroundImage: `url(${newspaper})` }} />
               <div className="event-editorial-photo__caption">
                 <span>Special edition · Vol. 15</span>
@@ -136,8 +144,8 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="memory-break">
-            <div className="memory-break__image" style={{ backgroundImage: `url(${cakeBlur})` }} />
+          <section className="memory-break memory-break--confetti">
+            <div className="memory-break__image memory-break__image--confetti" style={{ backgroundImage: `url(${heroConfetti})` }} />
             <div className="memory-break__overlay" />
             <Reveal className="memory-break__copy">
               <span>XV</span>
@@ -145,21 +153,11 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="dress-section section-dark dress-section--black">
-            <Reveal className="dress-copy dress-copy--centered">
-              <span className="eyebrow">Dress code</span>
-              <h2>Black is the mood.</h2>
-              <div className="color-chip"><span /></div>
-              <p>Vestuario en <strong>negro</strong>.</p>
-              <small>Evitar tonos plateados y grises.</small>
-            </Reveal>
-          </section>
-
           <section className="reserved-section section-light">
             <Reveal className="reserved-card">
               <span className="eyebrow">Queremos compartirlo contigo</span>
               <h2>Tu presencia hace especial esta noche.</h2>
-              <p>Regístrate a continuación para confirmar tu asistencia. Cada registro permite máximo 2 asistentes.</p>
+              <p>Confirma tu asistencia directamente por WhatsApp con María Paz o Vanessa. Máximo 2 asistentes por invitación.</p>
             </Reveal>
           </section>
 
@@ -181,16 +179,13 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="gallery-section section-light">
-            <Reveal className="gallery-title">
+          <section className="portrait-six">
+            <div className="portrait-six__image" style={{ backgroundImage: `url(${portraitBrown})` }} />
+            <div className="portrait-six__overlay" />
+            <Reveal className="portrait-six__copy">
               <span className="eyebrow">María Paz</span>
               <h2>Una noche. Mil recuerdos.</h2>
             </Reveal>
-            <div className="editorial-gallery editorial-gallery--real">
-              <Reveal className="gallery-image gallery-image--one" style={{ backgroundImage: `url(${cakeDisco})` }} />
-              <Reveal className="gallery-image gallery-image--two" delay={100} style={{ backgroundImage: `url(${portraitBrown})` }} />
-              <Reveal className="gallery-image gallery-image--three" delay={180} style={{ backgroundImage: `url(${newspaper})` }} />
-            </div>
           </section>
 
           <section className="final-section section-dark final-section--family">
@@ -209,9 +204,6 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               <strong>Con amor,</strong>
               <h2>María Paz <span>&amp;</span> sus papás</h2>
               <div className="final-xv">XV</div>
-              <a className="admin-entry-button" href="#/admin" aria-label="Abrir panel administrativo">
-                <span aria-hidden="true">⚙</span> Panel administrativo
-              </a>
             </Reveal>
           </section>
         </>
