@@ -628,3 +628,149 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .final-overlay--family { background: linear-gradient(180deg, rgba(7,6,9,.04) 0%, rgba(7,6,9,.18) 38%, rgba(7,6,9,.9) 68%, #09080b 100%); }
   .final-copy--family { padding: 58vh 22px 9vh; }
 }
+
+/* V1.15 — orden definitivo de fotos y confirmación directa por WhatsApp */
+.gate-image--real {
+  background-position: 50% 44%;
+  filter: saturate(.9) contrast(1.02) brightness(.83);
+}
+
+.hero-photo--save-date {
+  background-position: 50% 42%;
+  filter: grayscale(1) contrast(1.04) brightness(.84);
+}
+
+.portrait-break__image--cake {
+  background-position: 50% 48%;
+  filter: saturate(.9) contrast(1.02);
+}
+
+.event-editorial-photo--newspaper {
+  min-height: auto;
+  aspect-ratio: 3 / 2;
+  background: #f8f4f5;
+}
+.event-editorial-photo--newspaper .event-editorial-photo__image {
+  background-size: cover;
+  background-position: center 50%;
+}
+
+.memory-break--confetti { min-height: 88svh; }
+.memory-break__image--confetti {
+  background-position: 58% 42%;
+  filter: saturate(.95) contrast(1.03);
+}
+
+.portrait-six {
+  position: relative;
+  min-height: 92svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: #09080b;
+}
+.portrait-six__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: 54% 38%;
+  filter: saturate(.92) contrast(1.02);
+  transform: scale(1.015);
+}
+.portrait-six__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,6,9,.04) 18%, rgba(7,6,9,.15) 50%, rgba(7,6,9,.88) 100%);
+}
+.portrait-six__copy {
+  position: relative;
+  z-index: 2;
+  width: min(1050px, 100%);
+  margin: 0 auto;
+  padding: 0 26px 10vh;
+  color: #fff;
+}
+.portrait-six__copy h2 {
+  margin: 12px 0 0;
+  max-width: 760px;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 9vw, 6.4rem);
+  line-height: .9;
+  font-weight: 500;
+}
+
+.rsvp-card--direct { text-align: left; }
+.direct-rsvp-note {
+  margin: 24px 0 0;
+  line-height: 1.75;
+  color: #6e6267;
+}
+.whatsapp-confirm-box--direct { margin-top: 28px; }
+.song-whatsapp-block {
+  margin-top: 46px;
+  padding-top: 38px;
+  border-top: 1px solid rgba(103,80,89,.14);
+}
+.song-whatsapp-block h3 {
+  margin: 10px 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: .98;
+  font-weight: 500;
+}
+.song-whatsapp-block > p {
+  margin: 0 0 20px;
+  line-height: 1.7;
+  color: #6e6267;
+}
+.whatsapp-grid--song { margin-top: 18px; gap: 10px; }
+.whatsapp-grid--song a {
+  min-height: 64px;
+  border: 1px solid rgba(37,211,102,.32);
+  border-radius: 999px;
+  background: #fff;
+  color: #176b36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.whatsapp-grid--song a:hover {
+  transform: translateY(-1px);
+  background: #f4fff7;
+  box-shadow: 0 10px 24px rgba(37,211,102,.12);
+}
+.whatsapp-grid--song .whatsapp-svg { width: 34px; height: 34px; }
+.whatsapp-grid--song a > span:last-child { display: grid; gap: 1px; text-align: left; }
+.whatsapp-grid--song strong { font-size: .88rem; }
+.whatsapp-grid--song small { font-size: .64rem; opacity: .78; }
+
+@media (max-width: 720px) {
+  .gate-image--real { background-position: 50% 43%; }
+  .hero-photo--save-date { background-position: 50% 38%; }
+  .portrait-break__image--cake { background-position: 50% 44%; }
+  .event-editorial-photo--newspaper { aspect-ratio: 4 / 5; }
+  .event-editorial-photo--newspaper .event-editorial-photo__image { background-position: 50% 50%; }
+  .memory-break__image--confetti { background-position: 57% 40%; }
+  .portrait-six__image { background-position: 55% 34%; }
+}
+
+@media (max-width: 560px) {
+  .gate-content { padding-top: 23vh; }
+  .gate-image--real { background-position: 50% 40%; }
+  .hero-photo--save-date { background-position: 50% 35%; }
+  .hero-gradient {
+    background: linear-gradient(180deg, rgba(8,7,10,.08), rgba(8,7,10,.18) 44%, rgba(8,7,10,.96) 100%);
+  }
+  .portrait-break__image--cake { background-position: 50% 42%; }
+  .event-editorial-photo--newspaper { aspect-ratio: 3 / 4; }
+  .memory-break--confetti { min-height: 78svh; }
+  .memory-break__image--confetti { background-position: 56% 37%; }
+  .portrait-six { min-height: 84svh; }
+  .portrait-six__image { background-position: 55% 31%; }
+  .portrait-six__copy { padding: 0 22px 9vh; }
+  .whatsapp-grid--song { grid-template-columns: 1fr; }
+}
