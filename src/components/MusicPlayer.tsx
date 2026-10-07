@@ -1,46 +1,47 @@
 import { useEffect, useRef, useState } from 'react'
 
-const AUDIO_URL = `${import.meta.env.BASE_URL}audio/maria-paz.m4a`
+const AUDIO_URL = `${import.meta.env.BASE_URL}audio/maria-paz.mp3?v=118`
 const OPEN_EVENT = 'invitation:open'
 
 export function MusicPlayer({ active }: { active: boolean }) {
   const audioRef = useRef<HTMLAudioElement>(null)
-  const [musicEnabled, setMusicEnabled] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [needsTap, setNeedsTap] = useState(false)
 
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
-    const syncPlaying = () => {
-      setMusicEnabled(!audio.paused)
+    audio.volume = 0.72
+
+    const syncPlay = () => {
+      setIsPlaying(true)
       setNeedsTap(false)
     }
 
-    const syncPaused = () => setMusicEnabled(false)
+    const syncPause = () => setIsPlaying(false)
 
-    const onOpenGesture = () => {
+    const startFromGesture = () => {
       audio.volume = 0.72
-      void audio
-        .play()
+      void audio.play()
         .then(() => {
-          setMusicEnabled(true)
+          setIsPlaying(true)
           setNeedsTap(false)
         })
         .catch(() => {
-          setMusicEnabled(false)
+          setIsPlaying(false)
           setNeedsTap(true)
         })
     }
 
-    audio.addEventListener('play', syncPlaying)
-    audio.addEventListener('pause', syncPaused)
-    window.addEventListener(OPEN_EVENT, onOpenGesture)
+    audio.addEventListener('play', syncPlay)
+    audio.addEventListener('pause', syncPause)
+    window.addEventListener(OPEN_EVENT, startFromGesture)
 
     return () => {
-      audio.removeEventListener('play', syncPlaying)
-      audio.removeEventListener('pause', syncPaused)
-      window.removeEventListener(OPEN_EVENT, onOpenGesture)
+      audio.removeEventListener('play', syncPlay)
+      audio.removeEventListener('pause', syncPause)
+      window.removeEventListener(OPEN_EVENT, startFromGesture)
     }
   }, [])
 
@@ -50,7 +51,7 @@ export function MusicPlayer({ active }: { active: boolean }) {
 
     if (!active) {
       audio.pause()
-      setMusicEnabled(false)
+      setIsPlaying(false)
       setNeedsTap(false)
     }
   }, [active])
@@ -63,7 +64,7 @@ export function MusicPlayer({ active }: { active: boolean }) {
       try {
         audio.volume = 0.72
         await audio.play()
-        setMusicEnabled(true)
+        setIsPlaying(true)
         setNeedsTap(false)
       } catch {
         setNeedsTap(true)
@@ -76,25 +77,25 @@ export function MusicPlayer({ active }: { active: boolean }) {
 
   return (
     <>
-      <audio ref={audioRef} preload="metadata" loop playsInline>
-        <source src={AUDIO_URL} type="audio/mp4" />
+      <audio ref={audioRef} preload="auto" loop playsInline>
+        <source src={AUDIO_URL} type="audio/mpeg" />
       </audio>
 
       {active && (
         <button
           type="button"
-          className={`music-button music-button--premium ${musicEnabled ? 'is-playing' : ''} ${needsTap ? 'needs-tap' : ''}`}
+          className={`music-button music-button--v118 ${isPlaying ? 'is-playing' : ''} ${needsTap ? 'needs-tap' : ''}`}
           onClick={toggleMusic}
-          aria-label={musicEnabled ? 'Pausar música' : 'Reproducir música'}
-          title={musicEnabled ? 'Pausar música' : 'Reproducir música'}
+          aria-label={isPlaying ? 'Pausar música' : 'Reproducir música'}
+          title={isPlaying ? 'Pausar música' : 'Reproducir música'}
         >
-          <span className="music-equalizer" aria-hidden="true">
+          <span className="music-v118__icon" aria-hidden="true">
             <i />
             <i />
             <i />
           </span>
-          <span className="music-button__copy">
-            <small>{musicEnabled ? 'Sonando' : needsTap ? 'Toca para escuchar' : 'Música'}</small>
+          <span className="music-v118__copy">
+            <small>{isPlaying ? 'Sonando' : needsTap ? 'Toca para escuchar' : 'Música'}</small>
             <strong>I Will Survive</strong>
           </span>
         </button>

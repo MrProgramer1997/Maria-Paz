@@ -1,7 +1,6 @@
 import { Countdown } from './Countdown'
 import { DiscoBall } from './DiscoBall'
 import { EditorialPhoto } from './EditorialPhoto'
-import { ChurchIcon, ClockIcon, PartyIcon, PinIcon, SparklesIcon } from './Icons'
 import { MusicPlayer } from './MusicPlayer'
 import { Reveal } from './Reveal'
 import { RsvpSection } from './RsvpSection'
@@ -27,25 +26,21 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
   }
 
   return (
-    <main className={`invitation invitation--v117 ${opened ? 'invitation--opened' : ''}`}>
+    <main className={`invitation invitation--v118 ${opened ? 'invitation--opened' : ''}`}>
       <MusicPlayer active={opened} />
 
       {!opened && (
-        <section className="gate gate--v117" aria-label="Abrir invitación">
+        <section className="gate gate--v118" aria-label="Abrir invitación">
           <div className="gate-image gate-image--real" style={{ backgroundImage: `url(${cakeDisco})` }} />
-          <div className="gate-overlay gate-overlay--premium" />
-          <div className="gate-glow gate-glow--one" />
-          <div className="gate-glow gate-glow--two" />
+          <div className="gate-overlay gate-overlay--v118" />
           <DiscoBall />
-          <div className="gate-content gate-content--premium">
-            <div className="micro-badge"><SparklesIcon /> <span>Una noche para recordar</span></div>
-            <h1>
-              María <em>Paz</em>
-            </h1>
+          <div className="gate-content gate-content--v118">
+            <p className="editorial-kicker">Una noche para recordar</p>
+            <h1>María <em>Paz</em></h1>
             <span className="gate-subtitle">Mis quince años</span>
             <div className="gate-divider"><i /><span>XV</span><i /></div>
             <p className="gate-guest">Una invitación para compartir</p>
-            <button type="button" className="open-button open-button--premium" onClick={openInvitation}>
+            <button type="button" className="open-button open-button--v118" onClick={openInvitation}>
               <span>Descubrir mi invitación</span>
               <b>↓</b>
             </button>
@@ -55,12 +50,11 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
 
       {opened && (
         <>
-          <section className="hero-v116 hero-v117 section-dark">
+          <section className="hero-v116 hero-v118 section-dark">
             <div className="hero-v116__backdrop" style={{ backgroundImage: `url(${saveDate})` }} />
-            <div className="hero-v116__veil hero-v117__veil" />
-            <div className="hero-v117__sparkles" aria-hidden="true"><i /><i /><i /><i /></div>
+            <div className="hero-v116__veil hero-v118__veil" />
             <DiscoBall compact />
-            <div className="hero-v116__layout">
+            <div className="hero-v116__layout hero-v118__layout">
               <Reveal className="hero-v116__visual">
                 <EditorialPhoto
                   src={saveDate}
@@ -69,22 +63,22 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
                   eager
                 />
               </Reveal>
-              <Reveal className="hero-v116__copy hero-v117__copy" delay={120}>
-                <div className="micro-badge micro-badge--dark"><SparklesIcon /><span>07 · 11 · 2026</span></div>
+
+              <Reveal className="hero-v116__copy hero-v118__copy" delay={100}>
+                <span className="editorial-kicker editorial-kicker--light">07 · 11 · 2026</span>
                 <h1>María <span>Paz</span></h1>
                 <p>Quince años de amor, sueños y magia.</p>
-                <div className="hero-v117__line" />
+                <div className="editorial-rule" />
                 <small>Una noche para celebrar, recordar y bailar.</small>
               </Reveal>
             </div>
           </section>
 
-          <section className="intro-section intro-section--premium section-light">
+          <section className="intro-section intro-section--v118 section-light">
             <div className="flower-blur flower-blur--a" />
-            <div className="flower-blur flower-blur--b" />
-            <Reveal className="intro-copy">
+            <Reveal className="intro-copy intro-copy--v118">
               <span className="roman">XV</span>
-              <div className="micro-badge micro-badge--light"><SparklesIcon /><span>Un nuevo capítulo</span></div>
+              <span className="editorial-kicker">Un nuevo capítulo</span>
               <h2>Hoy comienza una nueva etapa.</h2>
               <p>
                 Hoy comienza una nueva etapa de mi vida, y quiero compartir la alegría de mis quince años
@@ -94,7 +88,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="photo-section-v116 photo-section-v117 section-dark">
+          <section className="photo-section-v116 photo-section-v118 section-dark">
             <Reveal className="photo-section-v116__wrap">
               <EditorialPhoto
                 src={cakeBlur}
@@ -109,61 +103,57 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="dress-section section-dark dress-section--black dress-section--premium">
-            <div className="dress-orbit dress-orbit--one" aria-hidden="true" />
-            <div className="dress-orbit dress-orbit--two" aria-hidden="true" />
-            <Reveal className="dress-copy dress-copy--centered">
-              <div className="micro-badge micro-badge--dark"><SparklesIcon /><span>Dress code</span></div>
+          <section className="dress-section section-dark dress-section--black dress-section--v118">
+            <Reveal className="dress-copy dress-copy--centered dress-copy--v118">
+              <span className="editorial-kicker editorial-kicker--light">Dress code</span>
               <h2>Black is the mood.</h2>
-              <div className="color-chip color-chip--premium"><span /></div>
+              <div className="dress-swatch" aria-hidden="true"><span /></div>
               <p>Vestuario en <strong>negro</strong>.</p>
               <small>Evitar tonos plateados y grises.</small>
             </Reveal>
           </section>
 
-          <section className="countdown-section countdown-section--premium section-dark">
+          <section className="countdown-section countdown-section--v118 section-dark">
             <Reveal>
-              <div className="micro-badge micro-badge--dark"><ClockIcon /><span>Falta muy poco</span></div>
+              <span className="editorial-kicker editorial-kicker--light">Falta muy poco</span>
               <h2>La noche que soñamos</h2>
               <Countdown />
             </Reveal>
           </section>
 
-          <section className="events-section events-section--premium section-pink">
-            <Reveal className="section-heading">
-              <div className="micro-badge micro-badge--light"><SparklesIcon /><span>Acompáñame</span></div>
+          <section className="events-section events-section--v118 section-pink">
+            <Reveal className="section-heading section-heading--v118">
+              <span className="editorial-kicker">Acompáñame</span>
               <h2>Dos momentos, un mismo recuerdo.</h2>
             </Reveal>
 
-            <div className="events-grid events-grid--premium">
-              <Reveal className="event-card event-card--premium" delay={80}>
-                <div className="event-card__icon"><ChurchIcon /></div>
+            <div className="events-grid events-grid--v118">
+              <Reveal className="event-card event-card--v118" delay={70}>
                 <div className="event-number">05</div>
                 <span className="event-label">Ceremonia religiosa</span>
                 <h3>Jueves · Noviembre</h3>
-                <div className="event-meta"><ClockIcon /><span>7:00 p. m.</span></div>
+                <div className="event-detail"><span>Hora</span><strong>7:00 p. m.</strong></div>
                 <div className="event-line" />
                 <strong>Parroquia San Miguel Arcángel</strong>
-                <div className="event-meta event-meta--place"><PinIcon /><span>Galicia · Pereira</span></div>
+                <p>Galicia · Pereira</p>
               </Reveal>
 
-              <Reveal className="event-card event-card--dark event-card--premium" delay={160}>
-                <div className="event-card__icon"><PartyIcon /></div>
+              <Reveal className="event-card event-card--dark event-card--v118" delay={140}>
                 <div className="event-number">07</div>
                 <span className="event-label">Celebración</span>
                 <h3>Sábado · Noviembre</h3>
-                <div className="event-meta"><ClockIcon /><span>7:00 p. m.</span></div>
+                <div className="event-detail"><span>Hora</span><strong>7:00 p. m.</strong></div>
                 <div className="event-line" />
                 <strong>Hotel Campestre Villa Juana</strong>
-                <div className="event-meta event-meta--place"><PinIcon /><span>Km 8 · Entrada 7 · Cerritos · Pereira</span></div>
+                <p>Km 8 · Entrada 7 · Cerritos · Pereira</p>
                 <a className="event-contact" href="tel:+573218012335">Tel. 321 801 2335</a>
-                <a className="outline-button outline-button--premium" href={MAPS_URL} target="_blank" rel="noreferrer">
-                  <PinIcon /> <span>Abrir en Google Maps</span> <b>↗</b>
+                <a className="outline-button outline-button--v118" href={MAPS_URL} target="_blank" rel="noreferrer">
+                  <span>Abrir en Google Maps</span><b>↗</b>
                 </a>
               </Reveal>
             </div>
 
-            <Reveal className="photo-section-v116__wrap photo-section-v116__wrap--landscape" delay={120}>
+            <Reveal className="photo-section-v116__wrap photo-section-v116__wrap--landscape" delay={100}>
               <EditorialPhoto
                 src={newspaper}
                 alt="María Paz con The Quinceañera Times"
@@ -177,7 +167,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="photo-section-v116 photo-section-v117 photo-section-v116--black">
+          <section className="photo-section-v116 photo-section-v118 photo-section-v116--black">
             <Reveal className="photo-section-v116__wrap">
               <EditorialPhoto
                 src={heroConfetti}
@@ -192,42 +182,36 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="reserved-section reserved-section--premium section-light">
-            <Reveal className="reserved-card reserved-card--premium">
-              <div className="reserved-card__icon"><SparklesIcon /></div>
-              <span className="eyebrow">Queremos compartirlo contigo</span>
+          <section className="reserved-section reserved-section--v118 section-light">
+            <Reveal className="reserved-card reserved-card--v118">
+              <span className="editorial-kicker">Queremos compartirlo contigo</span>
               <h2>Tu presencia hace especial esta noche.</h2>
               <p>Confirma tu asistencia directamente por WhatsApp con María Paz o Vanessa. Máximo 2 asistentes por invitación.</p>
             </Reveal>
           </section>
 
-          <section className="rsvp-section rsvp-section--premium section-pink">
+          <section className="rsvp-section rsvp-section--v118 section-pink">
             <Reveal>
               <RsvpSection />
             </Reveal>
           </section>
 
-          <section className="envelope-section envelope-section--premium section-dark">
-            <div className="envelope-stars" />
-            <div className="envelope-glow" aria-hidden="true" />
-            <Reveal className="envelope-content">
-              <div className="micro-badge micro-badge--dark"><SparklesIcon /><span>Un detalle especial</span></div>
-              <div className="envelope-stage" aria-hidden="true">
-                <i className="envelope-particle envelope-particle--one" />
-                <i className="envelope-particle envelope-particle--two" />
-                <i className="envelope-particle envelope-particle--three" />
-                <div className="envelope-icon envelope-icon--premium">
-                  <div className="envelope-letter"><span>XV</span></div>
-                  <div className="envelope-flap" />
-                  <div className="envelope-body" />
-                  <div className="envelope-seal">MP</div>
+          <section className="envelope-section envelope-section--v118 section-dark">
+            <Reveal className="envelope-content envelope-content--v118">
+              <span className="editorial-kicker editorial-kicker--light">Un detalle especial</span>
+              <div className="envelope-stage envelope-stage--v118" aria-hidden="true">
+                <div className="envelope-icon envelope-icon--v118">
+                  <div className="envelope-letter envelope-letter--v118"><span>XV</span></div>
+                  <div className="envelope-body envelope-body--v118" />
+                  <div className="envelope-flap envelope-flap--v118" />
+                  <div className="envelope-seal envelope-seal--v118">MP</div>
                 </div>
               </div>
               <h2>Lluvia de sobres</h2>
             </Reveal>
           </section>
 
-          <section className="photo-section-v116 photo-section-v117 section-dark photo-section-v116--portrait-brown">
+          <section className="photo-section-v116 photo-section-v118 section-dark photo-section-v116--portrait-brown">
             <Reveal className="photo-section-v116__wrap">
               <EditorialPhoto
                 src={portraitBrown}
@@ -242,10 +226,10 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="final-v116 final-v117 section-dark">
+          <section className="final-v116 final-v118 section-dark">
             <div className="final-v116__backdrop" style={{ backgroundImage: `url(${family})` }} />
-            <div className="final-v116__veil final-v117__veil" />
-            <div className="final-v116__layout">
+            <div className="final-v116__veil final-v118__veil" />
+            <div className="final-v116__layout final-v118__layout">
               <Reveal className="final-v116__photo">
                 <EditorialPhoto
                   src={family}
@@ -254,8 +238,8 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
                 />
               </Reveal>
 
-              <Reveal className="final-v116__copy final-v117__copy" delay={100}>
-                <div className="micro-badge micro-badge--dark"><SparklesIcon /><span>Gracias por ser parte de nuestra historia</span></div>
+              <Reveal className="final-v116__copy final-v118__copy" delay={90}>
+                <span className="editorial-kicker editorial-kicker--light">Gracias por ser parte de nuestra historia</span>
                 <p>
                   Los momentos más hermosos de la vida se convierten en recuerdos para siempre cuando los
                   compartimos con quienes amamos.
