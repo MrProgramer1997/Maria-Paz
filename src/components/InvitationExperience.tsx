@@ -1,5 +1,6 @@
 import { Countdown } from './Countdown'
 import { DiscoBall } from './DiscoBall'
+import { EditorialPhoto } from './EditorialPhoto'
 import { MusicPlayer } from './MusicPlayer'
 import { Reveal } from './Reveal'
 import { RsvpSection } from './RsvpSection'
@@ -20,11 +21,11 @@ const MAPS_URL = 'https://maps.app.goo.gl/WqBaVeuKRCTwKpDR8'
 
 export function InvitationExperience({ opened, onOpen }: InvitationExperienceProps) {
   return (
-    <main className={`invitation ${opened ? 'invitation--opened' : ''}`}>
+    <main className={`invitation invitation--v116 ${opened ? 'invitation--opened' : ''}`}>
       <MusicPlayer active={opened} />
 
       {!opened && (
-        <section className="gate" aria-label="Abrir invitación">
+        <section className="gate gate--v116" aria-label="Abrir invitación">
           <div className="gate-image gate-image--real" style={{ backgroundImage: `url(${cakeDisco})` }} />
           <div className="gate-overlay" />
           <DiscoBall />
@@ -46,18 +47,22 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
 
       {opened && (
         <>
-          <section className="hero section-dark">
-            <div className="hero-photo hero-photo--real hero-photo--save-date" style={{ backgroundImage: `url(${saveDate})` }} />
-            <div className="hero-gradient" />
-            <div className="ambient ambient-one" />
-            <div className="ambient ambient-two" />
+          <section className="hero-v116 section-dark">
+            <div className="hero-v116__backdrop" style={{ backgroundImage: `url(${saveDate})` }} />
+            <div className="hero-v116__veil" />
             <DiscoBall compact />
-            <div className="hero-copy">
-              <Reveal>
+            <div className="hero-v116__layout">
+              <Reveal className="hero-v116__visual">
+                <EditorialPhoto
+                  src={saveDate}
+                  alt="María Paz con el periódico Save the Date 07.11.26"
+                  className="editorial-photo--portrait editorial-photo--hero"
+                  eager
+                />
+              </Reveal>
+              <Reveal className="hero-v116__copy" delay={120}>
                 <span className="eyebrow">07 · 11 · 2026</span>
-                <h1>
-                  María <span>Paz</span>
-                </h1>
+                <h1>María <span>Paz</span></h1>
                 <p>Quince años de amor, sueños y magia.</p>
               </Reveal>
             </div>
@@ -76,12 +81,18 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="portrait-break portrait-break--real">
-            <div className="portrait-break__image portrait-break__image--real portrait-break__image--cake" style={{ backgroundImage: `url(${cakeBlur})` }} />
-            <div className="portrait-break__veil" />
-            <Reveal className="portrait-quote">
-              <span>Una historia</span>
-              <strong>que apenas comienza</strong>
+          <section className="photo-section-v116 section-dark">
+            <Reveal className="photo-section-v116__wrap">
+              <EditorialPhoto
+                src={cakeBlur}
+                alt="María Paz sosteniendo su pastel de quince años"
+                className="editorial-photo--portrait editorial-photo--cake"
+              >
+                <div className="editorial-caption editorial-caption--light">
+                  <span>Una historia</span>
+                  <strong>que apenas comienza</strong>
+                </div>
+              </EditorialPhoto>
             </Reveal>
           </section>
 
@@ -135,21 +146,32 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               </Reveal>
             </div>
 
-            <Reveal className="event-editorial-photo event-editorial-photo--newspaper" delay={120}>
-              <div className="event-editorial-photo__image" style={{ backgroundImage: `url(${newspaper})` }} />
-              <div className="event-editorial-photo__caption">
-                <span>Special edition · Vol. 15</span>
-                <strong>La estrella de la noche está lista para brillar.</strong>
-              </div>
+            <Reveal className="photo-section-v116__wrap photo-section-v116__wrap--landscape" delay={120}>
+              <EditorialPhoto
+                src={newspaper}
+                alt="María Paz con The Quinceañera Times"
+                className="editorial-photo--landscape"
+              >
+                <div className="editorial-caption editorial-caption--light">
+                  <span>Special edition · Vol. 15</span>
+                  <strong>La estrella de la noche está lista para brillar.</strong>
+                </div>
+              </EditorialPhoto>
             </Reveal>
           </section>
 
-          <section className="memory-break memory-break--confetti">
-            <div className="memory-break__image memory-break__image--confetti" style={{ backgroundImage: `url(${heroConfetti})` }} />
-            <div className="memory-break__overlay" />
-            <Reveal className="memory-break__copy">
-              <span>XV</span>
-              <strong>Un deseo, una noche, un recuerdo para siempre.</strong>
+          <section className="photo-section-v116 photo-section-v116--black">
+            <Reveal className="photo-section-v116__wrap">
+              <EditorialPhoto
+                src={heroConfetti}
+                alt="María Paz celebrando sus quince años con confeti"
+                className="editorial-photo--portrait"
+              >
+                <div className="editorial-caption editorial-caption--light">
+                  <span>XV</span>
+                  <strong>Un deseo, una noche, un recuerdo para siempre.</strong>
+                </div>
+              </EditorialPhoto>
             </Reveal>
           </section>
 
@@ -179,32 +201,48 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             </Reveal>
           </section>
 
-          <section className="portrait-six">
-            <div className="portrait-six__image" style={{ backgroundImage: `url(${portraitBrown})` }} />
-            <div className="portrait-six__overlay" />
-            <Reveal className="portrait-six__copy">
-              <span className="eyebrow">María Paz</span>
-              <h2>Una noche. Mil recuerdos.</h2>
+          <section className="photo-section-v116 section-dark photo-section-v116--portrait-brown">
+            <Reveal className="photo-section-v116__wrap">
+              <EditorialPhoto
+                src={portraitBrown}
+                alt="Retrato de María Paz"
+                className="editorial-photo--portrait"
+              >
+                <div className="editorial-caption editorial-caption--light">
+                  <span>María Paz</span>
+                  <strong>Una noche. Mil recuerdos.</strong>
+                </div>
+              </EditorialPhoto>
             </Reveal>
           </section>
 
-          <section className="final-section section-dark final-section--family">
-            <div className="final-photo final-photo--family" style={{ backgroundImage: `url(${family})` }} />
-            <div className="final-overlay final-overlay--family" />
-            <Reveal className="final-copy final-copy--family">
-              <span className="eyebrow">Gracias por ser parte de nuestra historia</span>
-              <p>
-                Los momentos más hermosos de la vida se convierten en recuerdos para siempre cuando los
-                compartimos con quienes amamos.
-              </p>
-              <p>
-                Gracias por ser parte de nuestra historia y por acompañarnos en una noche que quedará para siempre
-                en nuestros corazones.
-              </p>
-              <strong>Con amor,</strong>
-              <h2>María Paz <span>&amp;</span> sus papás</h2>
-              <div className="final-xv">XV</div>
-            </Reveal>
+          <section className="final-v116 section-dark">
+            <div className="final-v116__backdrop" style={{ backgroundImage: `url(${family})` }} />
+            <div className="final-v116__veil" />
+            <div className="final-v116__layout">
+              <Reveal className="final-v116__photo">
+                <EditorialPhoto
+                  src={family}
+                  alt="María Paz con sus papás"
+                  className="editorial-photo--portrait editorial-photo--family"
+                />
+              </Reveal>
+
+              <Reveal className="final-v116__copy" delay={100}>
+                <span className="eyebrow">Gracias por ser parte de nuestra historia</span>
+                <p>
+                  Los momentos más hermosos de la vida se convierten en recuerdos para siempre cuando los
+                  compartimos con quienes amamos.
+                </p>
+                <p>
+                  Gracias por ser parte de nuestra historia y por acompañarnos en una noche que quedará para siempre
+                  en nuestros corazones.
+                </p>
+                <strong>Con amor,</strong>
+                <h2>María Paz <span>&amp;</span> sus papás</h2>
+                <div className="final-xv">XV</div>
+              </Reveal>
+            </div>
           </section>
         </>
       )}
