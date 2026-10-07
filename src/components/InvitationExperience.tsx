@@ -26,7 +26,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
   }
 
   return (
-    <main className={`invitation invitation--v118 ${opened ? 'invitation--opened' : ''}`}>
+    <main className={`invitation invitation--v118 invitation--v119 ${opened ? 'invitation--opened' : ''}`}>
       <MusicPlayer active={opened} />
 
       {!opened && (
