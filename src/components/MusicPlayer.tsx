@@ -1,70 +1,102 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const YOUTUBE_VIDEO_ID = '6dYWe1c3OyU'
+const AUDIO_URL = `${import.meta.env.BASE_URL}audio/maria-paz.m4a`
+const OPEN_EVENT = 'invitation:open'
 
 export function MusicPlayer({ active }: { active: boolean }) {
+  const audioRef = useRef<HTMLAudioElement>(null)
   const [musicEnabled, setMusicEnabled] = useState(false)
-  const [playerKey, setPlayerKey] = useState(0)
+  const [needsTap, setNeedsTap] = useState(false)
 
   useEffect(() => {
-    if (active) {
-      // El clic en “Descubrir mi invitación” intenta iniciar la música.
-      // El reproductor de YouTube permanece fuera de la vista para no
-      // interferir visualmente con la tarjeta.
-      setMusicEnabled(true)
-      setPlayerKey((value) => value + 1)
-    } else {
+    const audio = audioRef.current
+    if (!audio) return
+
+    const syncPlaying = () => {
+      setMusicEnabled(!audio.paused)
+      setNeedsTap(false)
+    }
+    const syncPaused = () => setMusicEnabled(false)
+    const onOpenGesture = () => {
+      audio.volume = 0.72
+      void audio.play()
+        .then(() => {
+          setMusicEnabled(true)
+          setNeedsTap(false)
+        })
+        .catch(() => {
+          setMusicEnabled(false)
+          setNeedsTap(true)
+        })
+    }
+
+    audio.addEventListener('play', syncPlaying)
+    audio.addEventListener('pause', syncPaused)
+    window.addEventListener(OPEN_EVENT, onOpenGesture)
+
+    return () => {
+      audio.removeEventListener('play', syncPlaying)
+      audio.removeEventListener('pause', syncPaused)
+      window.removeEventListener(OPEN_EVENT, onOpenGesture)
+    }
+  }, [])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    if (!active) {
+      audio.pause()
       setMusicEnabled(false)
+      setNeedsTap(false)
     }
   }, [active])
 
-  const playerUrl = useMemo(() => {
-    const params = new URLSearchParams({
-      autoplay: '1',
-      loop: '1',
-      playlist: YOUTUBE_VIDEO_ID,
-      controls: '0',
-      playsinline: '1',
-      rel: '0',
-      modestbranding: '1',
-    })
+  if (!active) {
+    return (
+      <audio ref={audioRef} preload="metadata" loop playsInline>
+        <source src={AUDIO_URL} type="audio/mp4" />
+      </audio>
+    )
+  }
 
-    return `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?${params.toString()}`
-  }, [])
+  async function toggleMusic() {
+    const audio = audioRef.current
+    if (!audio) return
 
-  if (!active) return null
+    if (audio.paused) {
+      try {
+        audio.volume = 0.72
+        await audio.play()
+        setMusicEnabled(true)
+        setNeedsTap(false)
+      } catch {
+        setNeedsTap(true)
+      }
+      return
+    }
 
-  function toggleMusic() {
-    setMusicEnabled((enabled) => {
-      const next = !enabled
-      if (next) setPlayerKey((value) => value + 1)
-      return next
-    })
+    audio.pause()
   }
 
   return (
     <>
-      {musicEnabled && (
-        <div className="music-audio-frame" aria-hidden="true">
-          <iframe
-            key={playerKey}
-            src={playerUrl}
-            title="Música de la invitación"
-            allow="autoplay; encrypted-media"
-            tabIndex={-1}
-          />
-        </div>
-      )}
+      <audio ref={audioRef} preload="metadata" loop playsInline>
+        <source src={AUDIO_URL} type="audio/mp4" />
+      </audio>
 
       <button
         type="button"
-        className={`music-button music-button--label ${musicEnabled ? 'is-playing' : ''}`}
+        className={`music-button music-button--premium ${musicEnabled ? 'is-playing' : ''} ${needsTap ? 'needs-tap' : ''}`}
         onClick={toggleMusic}
         aria-label={musicEnabled ? 'Pausar música' : 'Reproducir música'}
         title={musicEnabled ? 'Pausar música' : 'Reproducir música'}
       >
-        <span className="music-icon" aria-hidden="true">♪</span>
-        <span className="music-button__text">Música</span>
+        <span className="music-equalizer" aria-hidden="true"><i /><i /><i /></span>
+        <span className="music-button__copy">
+          <small>{musicEnabled ? 'Sonando' : needsTap ? 'Toca para escuchar' : 'Música'}</small>
+          <strong>I Will Survive</strong>
+        </span>
       </button>
     </>
   )

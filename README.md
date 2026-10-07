@@ -1,20 +1,17 @@
-# Invitación María Paz XV — V1.14
+# Invitación María Paz · V1.17
 
-Tarjeta web interactiva desarrollada con React + Vite + TypeScript + Supabase y publicada en GitHub Pages.
+Invitación web responsive para los quince años de María Paz.
 
-## Estado V1.14
+## Flujo público
 
-- Sustituye las fotografías provisionales por las fotografías reales de María Paz.
-- Optimiza las fotografías a WebP para reducir peso sin alterar el diseño.
-- Reorganiza la composición editorial: portada, retrato, Save the Date, celebración, recuerdo, galería y cierre familiar.
-- Mantiene el Dress Code sobre fondo negro, sin fotografía.
-- Usa la fotografía de María Paz con sus papás como fondo del cierre y conserva el texto aprobado.
-- Mantiene la fecha límite de confirmación: 17 de octubre de 2026.
-- Mantiene máximo 2 asistentes por registro, validado también en Supabase.
-- Mantiene el campo opcional para recomendar una canción y su asociación con quien la recomendó.
-- Mantiene panel administrativo, WhatsApp posterior al registro, Google Maps y Lluvia de sobres.
-- La música definitiva queda pendiente. Esta versión no cambia el reproductor actual ni asume que el audio existente sea el final.
+- La invitación se abre sin depender de Supabase.
+- Confirmación de asistencia directamente por WhatsApp a María Paz o Vanessa.
+- Máximo 2 asistentes por invitación.
+- Recomendación de canciones por WhatsApp.
+- Música servida como archivo local desde `public/audio/maria-paz.m4a`, sin depender de YouTube.
+- Diseño editorial responsive para celular, tablet y computador.
+- Animaciones respetan `prefers-reduced-motion`.
 
-## Publicación
+## Administración
 
-El proyecto continúa preparado para GitHub Pages con `base: /Maria-Paz/`.
+El acceso histórico `#/admin` se conserva para consultar información previa, aunque el flujo público actual ya no registra confirmaciones en Supabase.
