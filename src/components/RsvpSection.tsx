@@ -1,12 +1,5 @@
-import { useMemo, useState } from 'react'
-import { registerGuest } from '../services/invitationService'
-
 const WHATSAPP_MARIA = '573118783759'
 const WHATSAPP_VANESSA = '573104784713'
-
-function normalizePhone(value: string) {
-  return value.replace(/\D/g, '').slice(0, 15)
-}
 
 function WhatsAppIcon() {
   return (
@@ -17,64 +10,20 @@ function WhatsAppIcon() {
   )
 }
 
+const confirmMessage = encodeURIComponent(
+  'Hola, quiero confirmar mi asistencia a los quince años de María Paz ✨\n\nAsistiremos: ___ persona(s) (máximo 2).\n\n¡Gracias!'
+)
+
+const songMessage = encodeURIComponent(
+  'Hola, quiero recomendar una canción para los quince años de María Paz 🎶\n\nCanción: \nArtista: '
+)
+
 export function RsvpSection() {
-  const [guestName, setGuestName] = useState('')
-  const [guestPhone, setGuestPhone] = useState('')
-  const [attendees, setAttendees] = useState(1)
-  const [songRecommendation, setSongRecommendation] = useState('')
-  const [saving, setSaving] = useState(false)
-  const [saved, setSaved] = useState(false)
-  const [error, setError] = useState('')
-
-  const whatsAppMessage = useMemo(() => encodeURIComponent([
-    'Hola, ya realicé mi registro para los quince años de María Paz ✨',
-    `Nombre: ${guestName}`,
-    `Celular: ${guestPhone}`,
-    `Asistentes registrados: ${attendees}`,
-    songRecommendation.trim() ? `Canción recomendada: ${songRecommendation.trim()}` : '',
-  ].filter(Boolean).join('\n')), [attendees, guestName, guestPhone, songRecommendation])
-
-  async function saveRegistration() {
-    if (guestName.trim().length < 2) {
-      setError('Escribe tu nombre para completar el registro.')
-      return
-    }
-
-    const phone = normalizePhone(guestPhone)
-    if (phone.length < 7) {
-      setError('Escribe un número de celular válido.')
-      return
-    }
-
-    if (songRecommendation.trim().length > 160) {
-      setError('La recomendación de canción es demasiado larga.')
-      return
-    }
-
-    setSaving(true)
-    setError('')
-
-    try {
-      await registerGuest(guestName, phone, attendees, songRecommendation)
-      setGuestName(guestName.trim())
-      setGuestPhone(phone)
-      setSongRecommendation(songRecommendation.trim())
-      setSaved(true)
-    } catch (err) {
-      if (err instanceof Error && err.message === 'PHONE_ALREADY_REGISTERED') {
-        setError('Este celular ya fue registrado. Si necesitas cambiar los asistentes, comunícate con María Paz o Vanessa.')
-      } else {
-        setError('No pudimos guardar el registro. Intenta nuevamente.')
-      }
-    } finally {
-      setSaving(false)
-    }
-  }
-
   return (
-    <div className="rsvp-card">
+    <div className="rsvp-card rsvp-card--direct">
       <span className="eyebrow">Confirma tu asistencia</span>
-      <h2>Regístrate para acompañarnos.</h2>
+      <h2>Escríbenos directamente por WhatsApp.</h2>
+
       <div className="rsvp-intro">
         <p>Hay momentos que se vuelven inolvidables cuando los compartimos con quienes amamos.</p>
         <p>Tu presencia será parte de este recuerdo tan especial.</p>
@@ -85,100 +34,49 @@ export function RsvpSection() {
         <strong>17 de octubre de 2026</strong>
       </div>
 
-      <p>
-        Completa tus datos. Cada registro permite un máximo de <strong>2 asistentes</strong>. Al finalizar podrás avisar por WhatsApp a María Paz o Vanessa.
+      <p className="direct-rsvp-note">
+        No necesitas diligenciar ningún formulario. Elige a quién deseas escribirle y confirma cuántas personas asistirán.
+        Recuerda que la invitación permite un máximo de <strong>2 asistentes</strong>.
       </p>
 
-      {saved ? (
-        <div className="confirmation-result confirmation-result--stacked">
-          <span className="confirmation-mark">✓</span>
-          <div>
-            <strong>¡Tu registro quedó guardado!</strong>
-            <p>{guestName}, registramos {attendees} {attendees === 1 ? 'asistente' : 'asistentes'}.</p>
-            {songRecommendation && <p>También guardamos tu canción recomendada: <strong>{songRecommendation}</strong>.</p>}
-          </div>
-
-          <div className="whatsapp-confirm-box">
-            <span className="whatsapp-logo"><WhatsAppIcon /></span>
-            <div>
-              <strong>Ahora avísanos por WhatsApp</strong>
-              <p>Elige a María Paz o Vanessa. El mensaje ya está preparado con tu registro.</p>
-            </div>
-          </div>
-
-          <div className="whatsapp-grid whatsapp-grid--hero">
-            <a href={`https://wa.me/${WHATSAPP_MARIA}?text=${whatsAppMessage}`} target="_blank" rel="noreferrer">
-              <WhatsAppIcon />
-              <span><strong>María Paz</strong><small>Avisar registro</small></span>
-            </a>
-            <a href={`https://wa.me/${WHATSAPP_VANESSA}?text=${whatsAppMessage}`} target="_blank" rel="noreferrer">
-              <WhatsAppIcon />
-              <span><strong>Vanessa</strong><small>Avisar registro</small></span>
-            </a>
-          </div>
+      <div className="whatsapp-confirm-box whatsapp-confirm-box--direct">
+        <span className="whatsapp-logo"><WhatsAppIcon /></span>
+        <div>
+          <strong>Confirmar asistencia</strong>
+          <p>El mensaje ya está preparado. Solo completa en WhatsApp si asistirán 1 o 2 personas.</p>
         </div>
-      ) : (
-        <>
-          <div className="rsvp-fields">
-            <label>
-              Nombre y apellido
-              <input
-                type="text"
-                value={guestName}
-                onChange={(event) => setGuestName(event.target.value)}
-                placeholder="Ej. Juan Pérez"
-                autoComplete="name"
-              />
-            </label>
-            <label>
-              Celular
-              <input
-                type="tel"
-                inputMode="numeric"
-                value={guestPhone}
-                onChange={(event) => setGuestPhone(normalizePhone(event.target.value))}
-                placeholder="Ej. 3001234567"
-                autoComplete="tel"
-              />
-            </label>
-          </div>
+      </div>
 
-          <div className="seat-selector">
-            <span>¿Cuántas personas asistirán?</span>
-            <div className="seat-options">
-              {[1, 2].map((value) => (
-                <button
-                  type="button"
-                  className={attendees === value ? 'active' : ''}
-                  onClick={() => setAttendees(value)}
-                  key={value}
-                >
-                  {value}
-                </button>
-              ))}
-            </div>
-            <small className="seat-limit-note">Máximo 2 asistentes por registro.</small>
-          </div>
+      <div className="whatsapp-grid whatsapp-grid--hero">
+        <a href={`https://wa.me/${WHATSAPP_MARIA}?text=${confirmMessage}`} target="_blank" rel="noreferrer">
+          <WhatsAppIcon />
+          <span><strong>María Paz</strong><small>Confirmar asistencia</small></span>
+        </a>
+        <a href={`https://wa.me/${WHATSAPP_VANESSA}?text=${confirmMessage}`} target="_blank" rel="noreferrer">
+          <WhatsAppIcon />
+          <span><strong>Vanessa</strong><small>Confirmar asistencia</small></span>
+        </a>
+      </div>
 
-          <label className="song-recommendation-field">
-            <span>Recomiéndanos una canción <small>(opcional)</small></span>
-            <input
-              type="text"
-              value={songRecommendation}
-              onChange={(event) => setSongRecommendation(event.target.value.slice(0, 160))}
-              placeholder="Canción y artista"
-              maxLength={160}
-            />
-            <small>La recomendación quedará asociada a tu nombre en el panel administrativo.</small>
-          </label>
+      <div className="song-whatsapp-block">
+        <span className="eyebrow">La música también la hacemos entre todos</span>
+        <h3>Recomiéndanos una canción.</h3>
+        <p>
+          Si tienes una canción que no puede faltar esa noche, envíala también por WhatsApp.
+          No necesitas registrarla en ningún formulario.
+        </p>
 
-          {error && <p className="form-error">{error}</p>}
-
-          <button type="button" className="primary-button" onClick={saveRegistration} disabled={saving}>
-            {saving ? 'Registrando…' : 'Registrar mi asistencia'}
-          </button>
-        </>
-      )}
+        <div className="whatsapp-grid whatsapp-grid--song">
+          <a href={`https://wa.me/${WHATSAPP_MARIA}?text=${songMessage}`} target="_blank" rel="noreferrer">
+            <WhatsAppIcon />
+            <span><strong>María Paz</strong><small>Recomendar canción</small></span>
+          </a>
+          <a href={`https://wa.me/${WHATSAPP_VANESSA}?text=${songMessage}`} target="_blank" rel="noreferrer">
+            <WhatsAppIcon />
+            <span><strong>Vanessa</strong><small>Recomendar canción</small></span>
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
