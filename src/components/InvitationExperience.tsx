@@ -26,7 +26,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
   }
 
   return (
-    <main className={`invitation invitation--v118 invitation--v119 ${opened ? 'invitation--opened' : ''}`}>
+    <main className={`invitation invitation--v118 invitation--v119 invitation--v120 ${opened ? 'invitation--opened' : ''}`}>
       <MusicPlayer active={opened} />
 
       {!opened && (
@@ -131,7 +131,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               <Reveal className="event-card event-card--v118" delay={70}>
                 <div className="event-number">05</div>
                 <span className="event-label">Ceremonia religiosa</span>
-                <h3>Jueves · Noviembre</h3>
+                <h3>Jueves · 05 de noviembre</h3>
                 <div className="event-detail"><span>Hora</span><strong>7:00 p. m.</strong></div>
                 <div className="event-line" />
                 <strong>Parroquia San Miguel Arcángel</strong>
@@ -141,7 +141,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
               <Reveal className="event-card event-card--dark event-card--v118" delay={140}>
                 <div className="event-number">07</div>
                 <span className="event-label">Celebración</span>
-                <h3>Sábado · Noviembre</h3>
+                <h3>Sábado · 07 de noviembre</h3>
                 <div className="event-detail"><span>Hora</span><strong>7:00 p. m.</strong></div>
                 <div className="event-line" />
                 <strong>Hotel Campestre Villa Juana</strong>
@@ -186,7 +186,7 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
             <Reveal className="reserved-card reserved-card--v118">
               <span className="editorial-kicker">Queremos compartirlo contigo</span>
               <h2>Tu presencia hace especial esta noche.</h2>
-              <p>Confirma tu asistencia directamente por WhatsApp con María Paz o Vanessa. Máximo 2 asistentes por invitación.</p>
+              <p>Confirma tu asistencia directamente por WhatsApp con María Paz o Vanessa.</p>
             </Reveal>
           </section>
 

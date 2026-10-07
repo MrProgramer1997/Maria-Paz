@@ -11,7 +11,7 @@ function WhatsAppIcon() {
 }
 
 const confirmMessage = encodeURIComponent(
-  'Hola, quiero confirmar mi asistencia a los quince años de María Paz ✨\n\nAsistiremos: ___ persona(s) (máximo 2).\n\n¡Gracias!'
+  'Hola, quiero confirmar mi asistencia a los quince años de María Paz ✨\n\n¡Gracias!'
 )
 
 const songMessage = encodeURIComponent(
@@ -34,16 +34,11 @@ export function RsvpSection() {
         <strong>17 de octubre de 2026</strong>
       </div>
 
-      <p className="direct-rsvp-note">
-        No necesitas diligenciar ningún formulario. Elige a quién deseas escribirle y confirma cuántas personas asistirán.
-        Recuerda que la invitación permite un máximo de <strong>2 asistentes</strong>.
-      </p>
-
       <div className="whatsapp-confirm-box whatsapp-confirm-box--direct">
         <span className="whatsapp-logo"><WhatsAppIcon /></span>
         <div>
           <strong>Confirmar asistencia</strong>
-          <p>El mensaje ya está preparado. Solo completa en WhatsApp si asistirán 1 o 2 personas.</p>
+          <p>El mensaje ya está preparado. Solo envíalo por WhatsApp para confirmar tu asistencia.</p>
         </div>
       </div>
 
