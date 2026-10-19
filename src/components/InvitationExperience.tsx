@@ -129,10 +129,10 @@ export function InvitationExperience({ opened, onOpen }: InvitationExperiencePro
 
             <div className="events-grid events-grid--v118">
               <Reveal className="event-card event-card--v118" delay={70}>
-                <div className="event-number">05</div>
+                <div className="event-number">06</div>
                 <span className="event-label">Ceremonia religiosa</span>
-                <h3>Jueves · 05 de noviembre</h3>
-                <div className="event-detail"><span>Hora</span><strong>7:00 p. m.</strong></div>
+                <h3>Viernes · 06 de noviembre</h3>
+                <div className="event-detail"><span>Hora</span><strong>5:30 p. m.</strong></div>
                 <div className="event-line" />
                 <strong>Parroquia San Miguel Arcángel</strong>
                 <p>Galicia · Pereira</p>

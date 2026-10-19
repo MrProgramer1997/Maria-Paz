@@ -31,7 +31,7 @@ export function RsvpSection() {
 
       <div className="rsvp-deadline" role="note" aria-label="Fecha límite de confirmación">
         <span>Confirmaciones hasta</span>
-        <strong>17 de octubre de 2026</strong>
+        <strong>31 de octubre de 2026</strong>
       </div>
 
       <div className="whatsapp-confirm-box whatsapp-confirm-box--direct">
